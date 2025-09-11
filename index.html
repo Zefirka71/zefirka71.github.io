@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Барашкина радость - кафе армянской кухни с традиционными блюдами и уютной атмосферой">
+    <meta name="keywords" content="армянская кухня, кафе, доставка, банкеты, хоровац, долма, пахлава">
+    <meta name="robots" content="index, follow">
+    <meta name="yandex-verification" content="9ded700e0ee8459e" />
+    <title>Барашкина радость - Армянская кухня</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #FFD700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            background: rgba(255, 215, 0, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Main content - slider style */
+        main {
+            margin-top: 80px;
+        }
+
+        .section {
+            min-height: calc(100vh - 80px);
+            padding: 4rem 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section:nth-child(odd) {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .section:nth-child(even) {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+        }
+
+        .section-content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            margin: 2rem 0;
+        }
+
+        h1 {
+            color: #8B4513;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #A0522D;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            border-bottom: 4px solid #FFD700;
+            padding-bottom: 1rem;
+        }
+
+        h3 {
+            color: #8B4513;
+            font-size: 1.8rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        p {
+            margin: 1rem 0;
+            text-align: justify;
+            font-size: 1.1rem;
+        }
+
+        /* Home section */
+        .hero {
+            text-align: center;
+            padding: 6rem 0;
+            position: relative;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .hero-image-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            background: linear-gradient(rgba(245, 245, 245, 0.8), rgba(248, 248, 248, 0.8));
+            padding: 2rem;
+            border-radius: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #FFD700;
+            color: #8B4513;
+            padding: 18px 35px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+            font-size: 1.1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin: 4rem 0;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 3rem;
+            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(248,249,250,0.9));
+            border-radius: 20px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Menu section */
+        .menu-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+
+        .menu-category {
+            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(248,249,250,0.95));
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 3px solid #FFD700;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .menu-category:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.2);
+        }
+
+        .menu-item {
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.8);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+
+        .menu-item-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .menu-item-name {
+            font-weight: bold;
+            color: #8B4513;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .menu-item-description {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 0.8rem;
+        }
+
+        .menu-item-price {
+            color: #A0522D;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .gallery-item {
+            height: 250px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.05);
+        }
+
+        /* Contact info */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(248,249,250,0.95));
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 3px solid #FFD700;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            color: #A0522D;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin: 1.5rem 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: bold;
+            color: #8B4513;
+            font-size: 1.1rem;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #FFD700;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #A0522D, #8B4513);
+            color: white;
+            padding: 18px 35px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(139, 69, 19, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(139, 69, 19, 0.4);
+        }
+
+        /* Reviews */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+
+        .review {
+            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(248,249,250,0.95));
+            padding: 2.5rem;
+            border-radius: 20px;
+            border-left: 6px solid #FFD700;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .review:hover {
+            transform: translateY(-5px);
+        }
+
+        .review-stars {
+            color: #FFD700;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .review-author {
+            font-weight: bold;
+            color: #8B4513;
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Navigation indicators */
+        .nav-indicator {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active {
+            background: #FFD700;
+            transform: scale(1.3);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #8B4513, #A0522D);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #FFD700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: #FFD700;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #8B4513;
+                flex-direction: column;
+                padding: 1rem 0;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .hero {
+                padding: 3rem 0;
+            }
+
+            .hero-image {
+                height: 100%;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .menu-categories {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-indicator {
+                display: none;
+            }
+
+            .section-content {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="images/logo.jpg" alt="Логотип Барашкина радость" style="height: 150px; width: 150px; border-radius: 12px;">
+                </div>
+                <nav>
+                    <button class="mobile-menu" id="mobileMenu">☰</button>
+                    <ul id="navMenu">
+                        <li><a href="#home" class="nav-link active">Главная</a></li>
+                        <li><a href="#about" class="nav-link">О нас</a></li>
+                        <li><a href="#menu" class="nav-link">Меню</a></li>
+                        <li><a href="#services" class="nav-link">Услуги</a></li>
+                        <li><a href="#gallery" class="nav-link">Галерея</a></li>
+                        <li><a href="#reviews" class="nav-link">Отзывы</a></li>
+                        <li><a href="#news" class="nav-link">Акции</a></li>
+                        <li><a href="#contacts" class="nav-link">Контакты</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="nav-indicator">
+        <div class="nav-dot active" data-target="home"></div>
+        <div class="nav-dot" data-target="about"></div>
+        <div class="nav-dot" data-target="menu"></div>
+        <div class="nav-dot" data-target="services"></div>
+        <div class="nav-dot" data-target="gallery"></div>
+        <div class="nav-dot" data-target="reviews"></div>
+        <div class="nav-dot" data-target="news"></div>
+        <div class="nav-dot" data-target="contacts"></div>
+    </div>
+
+    <main>
+        <!-- Главная -->
+        <section id="home" class="section">
+            <div class="container">
+                <div class="hero">
+                    <div class="hero-image-container">
+                        <img src="images/hero-bg.jpg" alt="Интерьер кафе Барашкина радость или традиционное армянское застолье" class="hero-image">
+                    </div>
+                    <div class="hero-content">
+                        <h1>Добро пожаловать в "Барашкина радость"</h1>
+                        <p>Подлинная армянская кухня в уютной домашней атмосфере города Тула</p>
+                        <a href="#menu" class="cta-button">Посмотреть меню</a>
+                        <a href="#contacts" class="cta-button">Забронировать столик</a>
+                    </div>
+                </div>
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-icon">🍖</div>
+                        <h3>Традиционные блюда</h3>
+                        <p>Хоровац, долма, хаш и другие армянские деликатесы, приготовленные по аутентичным рецептам</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">👨‍🍳</div>
+                        <h3>Опытные повара</h3>
+                        <p>Наши мастера готовят по старинным семейным рецептам, передаваемым из поколения в поколение</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🏠</div>
+                        <h3>Домашняя атмосфера</h3>
+                        <p>Уютное заведение для семейных торжеств и дружеских встреч в теплой, гостеприимной обстановке</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- О нас -->
+        <section id="about" class="section">
+            <div class="container">
+                <div class="section-content">
+                    <h2>О нашем кафе</h2>
+                    <h3>История кафе</h3>
+                    <p>Кафе "Барашкина радость" было основано в 2018 году семьей Арутюнян, которая переехала в наш город из солнечной Армении. Желание поделиться богатыми кулинарными традициями своей родины привело к созданию этого уютного заведения, где каждый гость становится частью большой семьи.</p>
+                    <h3>Наша философия</h3>
+                    <p>Мы верим, что еда - это больше, чем просто утоление голода. Это способ объединить людей, передать любовь и заботу. Каждое блюдо мы готовим с душой, используя только свежие качественные продукты и соблюдая аутентичные рецепты. Для нас важно не просто накормить, а подарить гостям кусочек Армении.</p>
+                    <h3>Повар и команда</h3>
+                    <p>Главный повар Арарат Арутюнян имеет более 20 лет опыта в приготовлении армянских блюд. Его рецепты передавались в семье из поколения в поколение. Команда кафе состоит из профессионалов, влюбленных в армянскую кухню и готовых поделиться этой любовью с каждым посетителем.</p>
+                    <h3>Армянские традиции</h3>
+                    <p>Армянская кухня - одна из древнейших кухонь мира, насчитывающая более 2000 лет истории. Она впитала в себя влияние различных культур, но сохранила свою уникальность. Основу составляют мясные блюда, свежие овощи, ароматные специи и, конечно же, знаменитый армянский лаваш, который выпекается в настоящем тандыре.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Меню -->
+        <section id="menu" class="section">
+            <div class="container">
+                <div class="section-content">
+                    <h2>Наше меню</h2>
+                    <div class="menu-categories">
+                        <div class="menu-category">
+                            <h3>🔥 Горячие блюда</h3>
+                            <div class="menu-item">
+                                <img src="images/khorovats.jpg" alt="Хоровац - армянский шашлык из баранины" class="menu-item-image">
+                                <div class="menu-item-name">Хоровац (шашлык из баранины)</div>
+                                <div class="menu-item-description">Сочное мясо молодого барашка, маринованное в специях и приготовленное на мангале</div>
+                                <div class="menu-item-price">550 ₽</div>
+                            </div>
+                            <div class="menu-item">
+                                <img src="images/dolma.jpg" alt="Долма - виноградные листья с начинкой" class="menu-item-image">
+                                <div class="menu-item-name">Долма традиционная</div>
+                                <div class="menu-item-description">Виноградные листья с начинкой из риса, мяса и ароматных трав</div>
+                                <div class="menu-item-price">320 ₽</div>
+                            </div>
+                            <div class="menu-item">
+                                <img src="images/kyufta.jpg" alt="Кюфта - мясные шарики в соусе" class="menu-item-image">
+                                <div class="menu-item-name">Кюфта по-армянски</div>
+                                <div class="menu-item-description">Мясные шарики в пряном томатном соусе с зеленью</div>
+                                <div class="menu-item-price">280 ₽</div>
+                            </div>
+                            <div class="menu-item">
+                                <img src="images/tjhvjik.jpg" alt="Тжвжик - жареные субпродукты" class="menu-item-image">
+                                <div class="menu-item-name">Тжвжик</div>
+                                <div class="menu-item-description">Жареные субпродукты с луком и специями</div>
+                                <div class="menu-item-price">350 ₽</div>
+                            </div>
+                        </div>
+                        <div class="menu-category">
+                            <h3>🥗 Закуски и салаты</h3>
+                            <div class="menu-item">
+                                <img src="images/hummus.jpg" alt="Хумус - нутовая паста с кунжутом" class="menu-item-image">
+                                <div class="menu-item-name">Хумус домашний</div>
+                                <div class="menu-item-description">Нутовая паста с кунжутом, оливковым маслом и специями</div>
+                                <div class="menu-item-price">180 ₽</div>
+                            </div>
+                            <div class="menu-item">
+                                <img src="images/basturma.jpg" alt="Бастурма - вяленое мясо" class="menu-item-image">
+                                <div class="menu-item-name">Бастурма армянская</div>
+                                <div class="menu-item-description">Вяленое мясо с чаманом и армянскими специями</div>
+                                <div class="menu-item-price">420 ₽</div>
+                            </div>
+                            <div class="menu-item">
+                                <img src="images/tabule.jpg" alt="Табуле - салат с булгуром" class="menu-item-image">
+                                <div class="menu-item-name">Табуле</div>
+                                <div class="menu-item-description">Салат с булгуром, помидорами, зеленью и лимонной заправкой</div>
+                                <div class="menu-item-price">240 ₽</div>
+                            </div>
+                            <div class="menu-item">
+                                <img src="images/mtsvadi.jpg" alt="Мцвади - закуска из овощей" class="menu-item-image">
+                                <div class="menu-item-name">Мцвади</div>
+                                <div class="menu-item-description">Закуска из свежих овощей с армянскими травами</div>
+                                <div class="menu-item-price">200 ₽</div>
+                            </div>
+                        </div>
+                        <div class="menu-category">
+                            <h3>🍲 Супы</h3>
+                            <div class="menu-item">
+                                <img src="images/spas.jpg" alt="Спас - суп на основе мацони" class="menu-item-image">
+                                <div class="menu-item-name">Спас (мацони суп)</div>
+                                <div class="menu-item-description">Традиционный суп на основе мацони с пшеничной крупой</div>
+                                <div class="menu-item-price">220 ₽</div>
+                            </div>
+                            <div class="menu-item">
+                                <img src="images/khash.jpg" alt="Хаш - суп из говяжьих ножек" class="menu-item-image">
+                                <div class="menu-item-name">Хаш</div>
+                                <div class="menu-item-description">Традиционный армянский суп из говяжьих ножек (подается только зимой)</div>
+                                <div class="menu-item-price">350 ₽</div>
+                            </div>
+                            <div class="menu-item">
+                                <img src="images/bozbash.jpg" alt="Бозбаш - суп из баранины" class="menu-item-image">
+                                <div class="menu-item-name">Бозбаш</div>
+                                <div class="menu-item-description">Густой суп из баранины с нутом и овощами</div>
+                                <div class="menu-item-price">290 ₽</div>
+                            </div>
+                        </div>
+                        <div class="menu-category">
+                            <h3>🍞 Выпечка и хлеб</h3>
+                            <div class="menu-item">
+                                <img src="images/lavash.jpg" alt="Лаваш - тонкий армянский хлеб" class="menu-item-image">
+                                <div class="menu-item-name">Лаваш армянский</div>
+                                <div class="menu-item-description">Тонкий хлеб, выпеченный в настоящем тандыре</div>
+                                <div class="menu-item-price">50 ₽</div>
+                            </div>
+                            <div class="menu-item">
+                                <img src="images/zhengyalov-hats.jpg" alt="Женгялов хац - лепешка с зеленью" class="menu-item-image">
+                                <div class="menu-item-name">Женгялов хац</div>
+                                <div class="menu-item-description">Тонкая лепешка с начинкой из семи видов зелени</div>
+                                <div class="menu-item-price">150 ₽</div>
+                            </div>
+                            <div class="menu-item">
+                                <img src="images/gata.jpg" alt="Гата - сладкая выпечка" class="menu-item-image">
+                                <div class="menu-item-name">Гата</div>
+                                <div class="menu-item-description">Сладкая выпечка с маслянистой начинкой</div>
+                                <div class="menu-item-price">120 ₽</div>
+                            </div>
+                            <div class="menu-item">
+                                <img src="images/nazuk.jpg" alt="Назук - слоеная выпечка" class="menu-item-image">
+                                <div class="menu-item-name">Назук</div>
+                                <div class="menu-item-description">Слоеная выпечка с ореховой начинкой</div>
+                                <div class="menu-item-price">130 ₽</div>
+                            </div>
+                        </div>
+                        <div class="menu-category">
+                            <h3>☕ Напитки</h3>
+                            <div class="menu-item">
+                                <img src="images/armenian-coffee.jpg" alt="Армянский кофе в джезве" class="menu-item-image">
+                                <div class="menu-item-name">Армянский кофе</div>
+                                <div class="menu-item-description">Кофе, сваренный в джезве по традиционному рецепту</div>
+                                <div class="menu-item-price">120 ₽</div>
+                            </div>
+                            <div class="menu-item">
+                                <img src="images/matsoni.jpg" alt="Мацони - кисломолочный напиток" class="menu-item-image">
+                                <div class="menu-item-name">Мацони</div>
+                                <div class="menu-item-description">Освежающий кисломолочный напиток</div>
+                                <div class="menu-item-price">80 ₽</div>
+                            </div>
+                            <div class="menu-item">
+                                <img src="images/kizil-compote.jpg" alt="Компот из кизила" class="menu-item-image">
+                                <div class="menu-item-name">Компот из кизила</div>
+                                <div class="menu-item-description">Домашний компот из армянского кизила</div>
+                                <div class="menu-item-price">90 ₽</div>
+                            </div>
+                            <div class="menu-item">
+                                <img src="images/armenian-cognac.jpg" alt="Армянский коньяк" class="menu-item-image">
+                                <div class="menu-item-name">Армянский коньяк</div>
+                                <div class="menu-item-description">Классический выдержанный коньяк (50 мл)</div>
+                                <div class="menu-item-price">350 ₽</div>
+                            </div>
+                        </div>
+                        <div class="menu-category">
+                            <h3>🍰 Десерты</h3>
+                            <div class="menu-item">
+                                <img src="images/baklava.jpg" alt="Пахлава - слоеная выпечка с орехами" class="menu-item-image">
+                                <div class="menu-item-name">Пахлава</div>
+                                <div class="menu-item-description">Слоеная выпечка с орехами, медом и корицей</div>
+                                <div class="menu-item-price">180 ₽</div>
+                            </div>
+                            <div class="menu-item">
+                                <img src="images/alani.jpg" alt="Алани - сушеные персики с орехами" class="menu-item-image">
+                                <div class="menu-item-name">Алани</div>
+                                <div class="menu-item-description">Сушеные персики, фаршированные орехами в виноградном сиропе</div>
+                                <div class="menu-item-price">200 ₽</div>
+                            </div>
+                            <div class="menu-item">
+                                <img src="images/shaker-churek.jpg" alt="Шакер-чурек - песочное печенье" class="menu-item-image">
+                                <div class="menu-item-name">Шакер-чурек</div>
+                                <div class="menu-item-description">Нежное песочное печенье с ванильным ароматом</div>
+                                <div class="menu-item-price">150 ₽</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Услуги -->
+        <section id="services" class="section">
+            <div class="container">
+                <div class="section-content">
+                    <h2>Наши услуги</h2>
+                    <div class="features">
+                        <div class="feature">
+                            <div class="feature-icon">🚚</div>
+                            <h3>Доставка</h3>
+                            <p>Быстрая доставка ваших любимых блюд прямо к вам домой или в офис в течение часа.</p>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">🎉</div>
+                            <h3>Банкеты и мероприятия</h3>
+                            <p>Организуем праздники на любой вкус – от семейных торжеств до корпоративных вечеринок.</p>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">🍴</div>
+                            <h3>Бизнес-ланчи</h3>
+                            <p>Вкусные и доступные обеды для офисных сотрудников с ежедневно обновляемым меню.</p>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">🍽️</div>
+                            <h3>Кейтеринг</h3>
+                            <p>Обслуживание ваших мероприятий с армянским колоритом на выезде.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Галерея -->
+        <section id="gallery" class="section">
+            <div class="container">
+                <div class="section-content">
+                    <h2>Галерея</h2>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="images/cafe-interior.jpg" alt="Интерьер кафе Барашкина радость" class="gallery-image">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/dishes.jpg" alt="Блюда армянской кухни" class="gallery-image">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/events.jpg" alt="Мероприятия в кафе" class="gallery-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Отзывы -->
+        <section id="reviews" class="section">
+            <div class="container">
+                <div class="section-content">
+                    <h2>Отзывы</h2>
+                    <div class="reviews-grid">
+                        <div class="review">
+                            <div class="review-stars">★★★★★</div>
+                            <p>Лучшая долма, которую я когда-либо пробовала! Атмосфера как дома, а персонал невероятно приветливый.</p>
+                            <div class="review-author">Анна</div>
+                        </div>
+                        <div class="review">
+                            <div class="review-stars">★★★★☆</div>
+                            <p>Хоровац просто божественный, а лаваш прямо из тандыра – это любовь с первого укуса!</p>
+                            <div class="review-author">Иван</div>
+                        </div>
+                        <div class="review">
+                            <div class="review-stars">★★★★★</div>
+                            <p>Заказывали банкет на день рождения – всё было на высшем уровне, гости в восторге!</p>
+                            <div class="review-author">Мария</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Акции и новости -->
+        <section id="news" class="section">
+            <div class="container">
+                <div class="section-content">
+                    <h2>Акции и новости</h2>
+                    <div class="reviews-grid">
+                        <div class="review">
+                            <h3>Скидка 20% на доставку</h3>
+                            <p>Каждый вторник с 12:00 до 18:00 заказывайте блюда с доставкой и получайте скидку 20%!</p>
+                        </div>
+                        <div class="review">
+                            <h3>Новое в меню</h3>
+                            <p>Попробуйте наш новый десерт – Алани! Сушеные персики с ореховой начинкой в виноградном сиропе.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Контакты -->
+        <section id="contacts" class="section">
+            <div class="container">
+                <div class="section-content">
+                    <h2>Контакты</h2>
+                    <div class="contact-info">
+                        <div class="contact-card">
+                            <div class="contact-icon">📍</div>
+                            <h3>Адрес</h3>
+                            <p>ул. Примерная, 123, Тула</p>
+                            <a href="https://yandex.ru/maps/geo/tula/53057133/" target="_blank">Схема проезда</a>
+                        </div>
+                        <div class="contact-card">
+                            <div class="contact-icon">📞</div>
+                            <h3>Телефон</h3>
+                            <p>+7 123 456 789</p>
+                        </div>
+                        <div class="contact-card">
+                            <div class="contact-icon">⏰</div>
+                            <h3>Часы работы</h3>
+                            <p>Пн-Вс: 10:00–22:00</p>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <h3>Форма обратной связи</h3>
+                        <form>
+                            <div class="form-group">
+                                <label for="name">Ваше имя</label>
+                                <input type="text" id="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Ваш email</label>
+                                <input type="email" id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Ваше сообщение</label>
+                                <textarea id="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Отправить</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>О нас</h3>
+                    <p>Кафе "Барашкина радость" — это армянский ресторан в Туле, основанный в 2018 году семьей Арутюнян, которая переехала в наш город из солнечной Армении. Желание поделиться богатыми кулинарными традициями своей родины привело к созданию этого уютного заведения, где каждый гость становится частью большой семьи.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Полезные ссылки</h3>
+                    <p><a href="#privacy">Политика конфиденциальности</a></p>
+                    <p><a href="#delivery">Условия доставки</a></p>
+                    <p><a href="#sitemap">Карта сайта</a></p>
+                    <p><a href="#loyalty">Программа лояльности</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Свяжитесь с нами</h3>
+                    <p>Email: info@barashkinaradost.ru</p>
+                    <p>Телефон: +374 123 456 789</p>
+                </div>
+            </div>
+            <p>&copy; 2025 Барашкина радость. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navMenu = document.getElementById('navMenu');
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Navigation dots and active link handling
+        const navLinks = document.querySelectorAll('.nav-link');
+        const navDots = document.querySelectorAll('.nav-dot');
+        const sections = document.querySelectorAll('.section');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                const targetId = link.getAttribute('href').substring(1);
+                document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        navDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const targetId = dot.getAttribute('data-target');
+                document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Highlight active section and dot on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - sectionHeight / 3) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+
+            navDots.forEach(dot => {
+                dot.classList.remove('active');
+                if (dot.getAttribute('data-target') === current) {
+                    dot.classList.add('active');
+                }
+            });
+        });
+
+        // Form submission (demo)
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Сообщение отправлено!');
+        });
+    </script>
+</body>
+</html>
