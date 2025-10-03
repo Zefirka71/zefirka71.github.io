@@ -1,5 +1,9 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://zefirka71.github.io/sitemap.xml
+Disallow: /index.html
+Disallow: /*?
+Disallow: /*&
+Disallow: /cgi-bin/
 
+Sitemap: https://zefirka71.github.io/sitemap.xml
