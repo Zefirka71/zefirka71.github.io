@@ -27,7 +27,7 @@
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/104130134" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
-
+     
     <style>
         * {
             margin: 0;
@@ -50,20 +50,47 @@
             background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
             padding: 15px 0;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: top right;
+        }
+        header.collapsed {
+            padding: 10px 20px;
+            top: 10px;
+            left: auto;
+            right: 20px;
+            width: auto;
+            max-width: 200px;
+            border-radius: 50px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            transform: scale(0.9);
         }
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 1;
+        }
+        header.collapsed .header-content {
+            flex-wrap: nowrap;
+            gap: 10px;
+            justify-content: center;
         }
         .logo {
             display: flex;
             align-items: center;
             gap: 15px;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 1;
+        }
+        header.collapsed .logo {
+            gap: 10px;
         }
         .logo img {
             width: 60px;
@@ -71,12 +98,30 @@
             border-radius: 8px;
             object-fit: cover;
             border: 2px solid #fff;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 1;
+        }
+        header.collapsed .logo img {
+            width: 45px;
+            height: 45px;
         }
         .logo-text {
             color: white;
             font-size: 1.5rem;
             font-weight: bold;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+                        transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 1;
+            transform: translateX(0) scale(1);
+            white-space: nowrap;
+            overflow: hidden;
+            max-width: 300px;
+        }
+        header.collapsed .logo-text {
+            opacity: 0;
+            transform: translateX(-20px) scale(0.8);
+            max-width: 0;
         }
         .logo-text span {
             display: block;
@@ -84,10 +129,43 @@
             font-weight: normal;
             margin-top: 2px;
         }
+        nav {
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+                        transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                        max-width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 1;
+            transform: translateX(0);
+            overflow: hidden;
+            max-width: 800px;
+        }
+        header.collapsed nav {
+            opacity: 0;
+            transform: translateX(20px);
+            max-width: 0;
+            pointer-events: none;
+        }
+        header.collapsed nav.active {
+            display: block;
+            position: absolute;
+            top: 70px;
+            right: 0;
+            background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            opacity: 1;
+            transform: translateX(0);
+            max-width: 250px;
+            pointer-events: auto;
+        }
         nav ul {
             display: flex;
             list-style: none;
             gap: 20px;
+        }
+        header.collapsed nav.active ul {
+            flex-direction: column;
+            gap: 10px;
         }
         nav a {
             color: white;
@@ -96,10 +174,47 @@
             border-radius: 20px;
             transition: all 0.3s ease;
             font-weight: 500;
+            white-space: nowrap;
         }
         nav a:hover {
             background-color: rgba(255,255,255,0.2);
             transform: translateY(-2px);
+        }
+        /* Hamburger Menu Button */
+        .hamburger-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1001;
+            opacity: 0;
+            transform: scale(0.5) rotate(-90deg);
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s,
+                        transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+        }
+        header.collapsed .hamburger-btn {
+            display: block;
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+        .hamburger-btn span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 5px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+        .hamburger-btn.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        .hamburger-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger-btn.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
         }
         /* Mobile Menu */
         .mobile-menu-btn {
@@ -122,6 +237,7 @@
             text-align: center;
             color: white;
             margin-bottom: 40px;
+            margin-top: 90px;
         }
         .hero-content {
             max-width: 800px;
@@ -147,6 +263,7 @@
             font-weight: bold;
             transition: all 0.3s ease;
             border: 2px solid #8B4513;
+            cursor: pointer;
         }
         .btn:hover {
             background: transparent;
@@ -442,13 +559,13 @@
         }
         /* Responsive Design */
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 15px;
+            header.collapsed {
+                right: 10px;
+                top: 10px;
             }
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
+            header.collapsed nav.active {
+                right: 0;
+                width: 200px;
             }
             .mobile-menu-btn {
                 display: block;
@@ -456,18 +573,19 @@
                 right: 20px;
                 top: 25px;
             }
-            nav ul {
+            header:not(.collapsed) nav ul {
                 display: none;
                 width: 100%;
                 flex-direction: column;
                 gap: 10px;
                 text-align: center;
             }
-            nav ul.active {
+            header:not(.collapsed) nav ul.active {
                 display: flex;
             }
             .hero {
                 height: 400px;
+                margin-top: 90px;
             }
             .hero h1 {
                 font-size: 2rem;
@@ -496,12 +614,15 @@
             .menu-items {
                 grid-template-columns: 1fr;
             }
+            header.collapsed {
+                right: 10px;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
-    <header>
+    <header id="mainHeader">
         <div class="container">
             <div class="header-content">
                 <div class="logo">
@@ -512,7 +633,12 @@
                     </div>
                 </div>
                 <button class="mobile-menu-btn">☰</button>
-                <nav>
+                <button class="hamburger-btn" id="hamburgerBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav id="mainNav">
                     <ul>
                         <li><a href="#home">Главная</a></li>
                         <li><a href="#about">О нас</a></li>
@@ -907,7 +1033,7 @@
                 </div>
             </div>
             <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2474.896493026598!2d37.6173!3d54.1961!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4135009c7f800001%3A0x400a9a4b7c1e100!2z0KLQvtC80LjRgNC-0LLQvtC5INCf0L7Qu9C70LjQvdC-0Log0KLRgNC-0LvQvtCy0LAsINCf0L7Qu9C70LjQvdC-0Log0KLRgNC-0LvQvtCy0LAsIDE5MDAwMA!5e0!3m2!1sru!2sru!4v1635000000000!5m2!1sru!2sru"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2474.896493026598!2d37.6173!3d54.1961!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4135009c7f800001%3A0x400a9a4b7c1e100!2z0KLQvtC80LjRgNC-0LLQvtC5INCf0L7Qu9C70LjQvdC-0LOG0KLRgNC-0LvQvtCy0LAsINCf0L7Qu9C70LjQvdC-0LOG0KLRgNC-0LvQvtCy0LAsIDE5MDAwMA!5e0!3m2!1sru!2sru!4v1635000000000!5m2!1sru!2sru"></iframe>
             </div>
         </div>
     </section>
@@ -944,21 +1070,67 @@
         </div>
     </footer>
     <script>
-        // Mobile Menu Toggle
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-            document.querySelector('nav ul').classList.toggle('active');
+        const header = document.getElementById('mainHeader');
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mainNav = document.getElementById('mainNav');
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        let lastScrollTop = 0;
+        let isMenuOpen = false;
+
+        // Header collapse on scroll
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100 && !isMenuOpen) {
+                header.classList.add('collapsed');
+            } else if (scrollTop <= 50) {
+                header.classList.remove('collapsed');
+                mainNav.classList.remove('active');
+                hamburgerBtn.classList.remove('active');
+                isMenuOpen = false;
+            }
+            
+            lastScrollTop = scrollTop;
         });
+
+        // Hamburger menu toggle
+        hamburgerBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            isMenuOpen = !isMenuOpen;
+            this.classList.toggle('active');
+            mainNav.classList.toggle('active');
+            
+            if (isMenuOpen) {
+                header.classList.add('collapsed');
+            }
+        });
+
+        // Mobile menu toggle (for non-collapsed header)
+        mobileMenuBtn.addEventListener('click', function() {
+            const navUl = document.querySelector('nav ul');
+            navUl.classList.toggle('active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (header.classList.contains('collapsed') && 
+                !header.contains(e.target) && 
+                isMenuOpen) {
+                mainNav.classList.remove('active');
+                hamburgerBtn.classList.remove('active');
+                isMenuOpen = false;
+            }
+        });
+
         // Menu Category Filter
         document.querySelectorAll('.menu-category-btn').forEach(button => {
             button.addEventListener('click', function() {
-                // Remove active class from all buttons
                 document.querySelectorAll('.menu-category-btn').forEach(btn => {
                     btn.classList.remove('active');
                 });
-                // Add active class to clicked button
                 this.classList.add('active');
                 const category = this.getAttribute('data-category');
-                // Show/hide menu items based on category
+                
                 document.querySelectorAll('.menu-item').forEach(item => {
                     if (category === 'all' || item.getAttribute('data-category') === category) {
                         item.style.display = 'block';
@@ -968,6 +1140,7 @@
                 });
             });
         });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -978,41 +1151,21 @@
                         top: target.offsetTop - 80,
                         behavior: 'smooth'
                     });
-                    // Close mobile menu if open
+                    // Close menus
                     document.querySelector('nav ul').classList.remove('active');
+                    mainNav.classList.remove('active');
+                    hamburgerBtn.classList.remove('active');
+                    isMenuOpen = false;
                 }
             });
         });
+
         // Form submission
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             alert('Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время.');
             this.reset();
         });
-        // Add SEO keywords to meta description dynamically
-        const seoKeywords = [
-            "армянская кухня",
-            "армянское кафе",
-            "кавказская кухня Тула",
-            "где поесть в Туле",
-            "долма Тула",
-            "армянский ресторан",
-            "армянский шашлык",
-            "манты в Туле",
-            "хачапури Тула",
-            "армянская выпечка",
-            "мацун армянский",
-            "доставка армянской еды",
-            "заказать армянскую кухню",
-            "армянское кафе с доставкой"
-        ];
-        const metaDescription = document.querySelector('meta[name="description"]');
-        const currentDescription = metaDescription.getAttribute('content');
-        metaDescription.setAttribute('content', currentDescription + ' ' + seoKeywords.join(', '));
     </script>
 </body>
 </html>
-
-
-
-
