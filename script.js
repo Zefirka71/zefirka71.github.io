@@ -5,6 +5,9 @@ const mainNav = document.getElementById('mainNav');
 let lastScrollTop = 0;
 let isMenuOpen = false;
 
+// ============================
+// PARALLAX EFFECT ON HERO
+// ============================
 const heroBackground = document.getElementById('heroBackground');
 
 window.addEventListener('scroll', function() {
@@ -16,19 +19,19 @@ window.addEventListener('scroll', function() {
         heroBackground.style.transform = `translateY(${scrollTop * parallaxSpeed}px)`;
     }
     
-    // Header collapse on scroll
+    // Header collapse on scroll - НЕ сворачиваем если меню открыто
     if (scrollTop > 100 && !isMenuOpen) {
         header.classList.add('collapsed');
-    } else if (scrollTop <= 50) {
+    } else if (scrollTop <= 50 && !isMenuOpen) {
         header.classList.remove('collapsed');
-        mainNav.classList.remove('active');
-        hamburgerBtn.classList.remove('active');
-        isMenuOpen = false;
     }
     
     lastScrollTop = scrollTop;
 });
 
+// ============================
+// SCROLL REVEAL ANIMATION
+// ============================
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -77,6 +80,9 @@ document.querySelectorAll('.scroll-reveal').forEach(section => {
     observer.observe(section);
 });
 
+// ============================
+// ROTATING QUOTES
+// ============================
 const quotes = document.querySelectorAll('.quote');
 let currentQuote = 0;
 
@@ -89,20 +95,24 @@ function rotateQuotes() {
 // Меняем цитаты каждые 5 секунд
 setInterval(rotateQuotes, 5000);
 
+// ============================
+// HAMBURGER MENU
+// ============================
 hamburgerBtn.addEventListener('click', function(e) {
     e.stopPropagation();
     isMenuOpen = !isMenuOpen;
     this.classList.toggle('active');
     mainNav.classList.toggle('active');
+    
+    // Открываем/закрываем список меню
+    const navUl = mainNav.querySelector('ul');
+    if (navUl) {
+        navUl.classList.toggle('active');
+    }
+    
     if (isMenuOpen) {
         header.classList.add('collapsed');
     }
-});
-
-// Mobile menu toggle (for non-collapsed header)
-mobileMenuBtn.addEventListener('click', function() {
-    const navUl = document.querySelector('nav ul');
-    navUl.classList.toggle('active');
 });
 
 // Close menu when clicking outside
@@ -116,6 +126,9 @@ document.addEventListener('click', function(e) {
     }
 });
 
+// ============================
+// ANIMATED MENU FILTER
+// ============================
 document.querySelectorAll('.menu-category-btn').forEach(button => {
     button.addEventListener('click', function() {
         // Убираем активный класс со всех кнопок
@@ -159,6 +172,9 @@ document.querySelectorAll('.menu-category-btn').forEach(button => {
     });
 });
 
+// ============================
+// GALLERY SLIDER
+// ============================
 const sliderTrack = document.querySelector('.gallery-slider-track');
 const slides = document.querySelectorAll('.gallery-slide');
 const prevBtn = document.querySelector('.slider-btn.prev');
@@ -241,6 +257,9 @@ function handleSwipe() {
     }
 }
 
+// ============================
+// SMOOTH SCROLLING
+// ============================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -260,6 +279,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// ============================
+// FORM SUBMISSION
+// ============================
 document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
@@ -285,6 +307,9 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     }, 1000);
 });
 
+// ============================
+// KEYBOARD NAVIGATION
+// ============================
 document.addEventListener('keydown', function(e) {
     // Навигация по слайдеру стрелками
     if (e.key === 'ArrowLeft') {
@@ -294,6 +319,10 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
+// ============================
+// PERFORMANCE OPTIMIZATION
+// ============================
+// Debounce функция для оптимизации событий прокрутки
 function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
