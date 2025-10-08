@@ -8,12 +8,17 @@
     <meta name="description" content="Армянская кухня в Туле. Барашкина радость - уютное кафе с традиционными рецептами и качественными продуктами.">
     <meta name="keywords" content="армянская кухня, армянское кафе, кавказская кухня Тула, где поесть в Туле, долма Тула, армянский шашлык, доставка армянской еды, бизнес-ланчи Тула, банкеты армянская кухня, мацони, лаваш, хачапури">
 
+    <!-- Preload critical resources -->
     <link rel="preload" as="image" href="images/logo.jpg">
     <link rel="preload" as="image" href="images/hero-bg.jpg">
-    <link rel="stylesheet" href="style.css">
+    <link rel="preload" as="style" href="style.css" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="style.css"></noscript>
 
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="canonical" href="https://zefirka71.github.io/">
 
     <!-- Open Graph / Social -->
@@ -34,6 +39,7 @@
         ym(104130134, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/104130134" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
 </head>
 <body>
     <!-- Header -->
@@ -47,6 +53,7 @@
                         <span>Армянская кухня в Туле</span>
                     </div>
                 </div>
+                <button class="mobile-menu-btn" aria-label="Мобильное меню">☰</button>
                 <button class="hamburger-btn" id="hamburgerBtn" aria-label="Меню навигации">
                     <span></span>
                     <span></span>
@@ -67,35 +74,17 @@
         </div>
     </header>
 
-    <!-- Hero Section with Parallax -->
+    <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-bg" id="heroBackground"></div>
         <div class="hero-content">
             <h1>Барашкина радость</h1>
             <p>Уютное кафе армянской кухни в Туле с традиционными рецептами и качественными продуктами</p>
             <a href="#menu" class="btn" aria-label="Посмотреть меню">Посмотреть меню</a>
-            
-            <!-- Rotating Quotes -->
-            <div class="quotes-container">
-                <div class="quote active">
-                    <p>"Еда — это язык, на котором говорят все народы"</p>
-                </div>
-                <div class="quote">
-                    <p>"Хорошая кухня — это основа подлинного счастья"</p>
-                    <span>— Огюст Эскофье</span>
-                </div>
-                <div class="quote">
-                    <p>"Кулинария — это искусство, которое питает жизнь"</p>
-                </div>
-                <div class="quote">
-                    <p>"Армянская кухня — это история народа на тарелке"</p>
-                </div>
-            </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="scroll-reveal">
+    <section id="about">
         <div class="container">
             <h2 class="section-title">О нас</h2>
             <div class="about-content">
@@ -114,7 +103,7 @@
     </section>
 
     <!-- Menu Section -->
-    <section id="menu" class="scroll-reveal">
+    <section id="menu">
         <div class="container">
             <h2 class="section-title">Наше меню</h2>
             <div class="menu-categories">
@@ -330,7 +319,7 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="scroll-reveal">
+    <section id="services">
         <div class="container">
             <h2 class="section-title">Наши услуги</h2>
             <div class="services-grid">
@@ -358,42 +347,35 @@
         </div>
     </section>
 
-    <!-- Gallery Section with Slider -->
-    <section id="gallery" class="scroll-reveal">
+    <!-- Gallery Section -->
+    <section id="gallery">
         <div class="container">
             <h2 class="section-title">Галерея</h2>
-            <div class="gallery-slider">
-                <button class="slider-btn prev" aria-label="Предыдущее фото">‹</button>
-                <div class="gallery-slider-container">
-                    <div class="gallery-slider-track">
-                        <div class="gallery-slide">
-                            <img src="images/gallery1.jpg" alt="Интерьер кафе" loading="lazy">
-                        </div>
-                        <div class="gallery-slide">
-                            <img src="images/gallery2.jpg" alt="Блюда армянской кухни" loading="lazy">
-                        </div>
-                        <div class="gallery-slide">
-                            <img src="images/gallery3.jpg" alt="Уютный интерьер" loading="lazy">
-                        </div>
-                        <div class="gallery-slide">
-                            <img src="images/gallery4.jpg" alt="Шашлык на гриле" loading="lazy">
-                        </div>
-                        <div class="gallery-slide">
-                            <img src="images/gallery5.jpg" alt="Армянские закуски" loading="lazy">
-                        </div>
-                        <div class="gallery-slide">
-                            <img src="images/gallery6.jpg" alt="Десерты" loading="lazy">
-                        </div>
-                    </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/gallery1.jpg" alt="Интерьер кафе" loading="lazy" width="400" height="250">
                 </div>
-                <button class="slider-btn next" aria-label="Следующее фото">›</button>
+                <div class="gallery-item">
+                    <img src="images/gallery2.jpg" alt="Блюда армянской кухни" loading="lazy" width="400" height="250">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery3.jpg" alt="Уютный интерьер" loading="lazy" width="400" height="250">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery4.jpg" alt="Шашлык на гриле" loading="lazy" width="400" height="250">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery5.jpg" alt="Армянские закуски" loading="lazy" width="400" height="250">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery6.jpg" alt="Десерты" loading="lazy" width="400" height="250">
+                </div>
             </div>
-            <div class="slider-dots"></div>
         </div>
     </section>
 
     <!-- Reviews Section -->
-    <section id="reviews" class="scroll-reveal">
+    <section id="reviews">
         <div class="container">
             <h2 class="section-title">Отзывы наших гостей</h2>
             <div class="reviews-container">
@@ -438,7 +420,7 @@
     </section>
 
     <!-- Contacts Section -->
-    <section id="contacts" class="scroll-reveal">
+    <section id="contacts">
         <div class="container">
             <h2 class="section-title">Контакты</h2>
             <div class="contacts-content">
