@@ -1,7 +1,7 @@
+// Header Elements
 const header = document.getElementById('mainHeader');
 const hamburgerBtn = document.getElementById('hamburgerBtn');
 const mainNav = document.getElementById('mainNav');
-const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 let lastScrollTop = 0;
 let isMenuOpen = false;
 
@@ -77,9 +77,6 @@ document.querySelectorAll('.scroll-reveal').forEach(section => {
     observer.observe(section);
 });
 
-// ============================
-// ROTATING QUOTES
-// ============================
 const quotes = document.querySelectorAll('.quote');
 let currentQuote = 0;
 
