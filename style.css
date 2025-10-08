@@ -160,6 +160,33 @@ nav ul {
     gap: 20px;
 }
 
+/* На мобильных скрываем меню по умолчанию */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+        border-radius: 15px;
+        padding: 15px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        flex-direction: column;
+        gap: 10px;
+        width: 200px;
+        z-index: 999;
+    }
+    
+    nav ul.active {
+        display: flex;
+    }
+    
+    header:not(.collapsed) nav ul {
+        top: 80px;
+        right: 20px;
+    }
+}
+
 header.collapsed nav.active ul {
     flex-direction: column;
     gap: 10px;
@@ -189,16 +216,26 @@ nav a:focus {
     cursor: pointer;
     padding: 5px;
     z-index: 1001;
-    opacity: 0;
-    transform: scale(0.5) rotate(-90deg);
-    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s,
-                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Показываем hamburger на мобильных всегда */
+@media (max-width: 768px) {
+    .hamburger-btn {
+        display: block !important;
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+        position: absolute;
+        right: 20px;
+        top: 25px;
+    }
 }
 
 header.collapsed .hamburger-btn {
     display: block;
     opacity: 1;
     transform: scale(1) rotate(0deg);
+    position: static;
 }
 
 .hamburger-btn span {
@@ -223,14 +260,27 @@ header.collapsed .hamburger-btn {
     transform: rotate(45deg) translate(-5px, -6px);
 }
 
-/* Mobile Menu */
-.mobile-menu-btn {
-    display: none;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.5rem;
-    cursor: pointer;
+/* Hamburger Button Animation */
+.hamburger-btn span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: white;
+    margin: 5px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+.hamburger-btn.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-btn.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
 }
 
 /* Hero Section with Parallax */
@@ -796,33 +846,32 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    /* Оставляем только hamburger-btn */
+    .hamburger-btn {
+        display: block !important;
+        opacity: 1 !important;
+        transform: scale(1) rotate(0deg) !important;
+        position: absolute !important;
+        right: 20px;
+        top: 25px;
+    }
+    
     header.collapsed {
         right: 10px;
         top: 10px;
     }
     
-    header.collapsed nav.active {
-        right: 0;
-        width: 200px;
+    header.collapsed .hamburger-btn {
+        position: static !important;
     }
     
-    .mobile-menu-btn {
-        display: block;
-        position: absolute;
-        right: 20px;
-        top: 25px;
+    header.collapsed nav.active ul {
+        top: 70px;
     }
     
-    header:not(.collapsed) nav ul {
+    /* Скрываем цитаты на мобильных */
+    .quotes-container {
         display: none;
-        width: 100%;
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-    }
-    
-    header:not(.collapsed) nav ul.active {
-        display: flex;
     }
     
     .hero {
@@ -832,6 +881,11 @@ footer {
     
     .hero h1 {
         font-size: 2rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+        margin-bottom: 20px;
     }
     
     .about-content,
@@ -858,12 +912,21 @@ footer {
         padding: 0 15px;
     }
     
+    /* Скрываем цитаты на малых экранах */
+    .quotes-container {
+        display: none;
+    }
+    
     .hero {
-        height: 300px;
+        height: 350px;
     }
     
     .hero h1 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
+    }
+    
+    .hero p {
+        font-size: 0.95rem;
     }
     
     .section-title {
@@ -876,6 +939,21 @@ footer {
     
     header.collapsed {
         right: 10px;
+    }
+    
+    /* Убираем дублирование кнопки меню */
+    .mobile-menu-btn {
+        display: none !important;
+    }
+    
+    .hamburger-btn {
+        display: block !important;
+    }
+    
+    header:not(.collapsed) .hamburger-btn {
+        position: absolute;
+        right: 15px;
+        top: 25px;
     }
     
     .gallery-slide {
@@ -893,5 +971,16 @@ footer {
     
     .slider-btn.next {
         right: 10px;
+    }
+    
+    /* Уменьшаем отступы для мобильных */
+    .hero-content {
+        padding: 15px;
+    }
+    
+    .service-card,
+    .review,
+    .contact-form {
+        padding: 20px;
     }
 }
