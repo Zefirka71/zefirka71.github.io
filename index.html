@@ -7,13 +7,27 @@
     <title>Барашкина радость - Армянская кухня в Туле</title>
     <meta name="description" content="Армянская кухня в Туле. Барашкина радость - уютное кафе с традиционными рецептами и качественными продуктами.">
     <meta name="keywords" content="армянская кухня, армянское кафе, кавказская кухня Тула, где поесть в Туле, долма Тула, армянский шашлык, доставка армянской еды, бизнес-ланчи Тула, банкеты армянская кухня, мацони, лаваш, хачапури">
+
+    <!-- Preload critical resources -->
+    <link rel="preload" as="image" href="images/logo.jpg">
+    <link rel="preload" as="image" href="images/hero-bg.jpg">
+    <link rel="preload" as="style" href="style.css" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="style.css"></noscript>
+
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="canonical" href="https://zefirka71.github.io/">
-    
+
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="Барашкина радость - Армянская кухня в Туле">
+    <meta property="og:description" content="Уютное кафе армянской кухни в Туле с традиционными рецептами и качественными продуктами.">
+    <meta property="og:image" content="https://zefirka71.github.io/images/hero-bg.jpg">
+    <meta property="og:url" content="https://zefirka71.github.io/">
+    <meta name="twitter:card" content="summary_large_image">
+
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
         (function(m,e,t,r,i,k,a){
@@ -22,623 +36,30 @@
             for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
             k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
         })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=104130134', 'ym');
-
         ym(104130134, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/104130134" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
-     
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Georgia', serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f9f5f0;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        /* Header Styles */
-        header {
-            background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
-            padding: 15px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            transform-origin: top right;
-        }
-        header.collapsed {
-            padding: 10px 20px;
-            top: 10px;
-            left: auto;
-            right: 20px;
-            width: auto;
-            max-width: 200px;
-            border-radius: 50px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-            transform: scale(0.9);
-        }
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 1;
-        }
-        header.collapsed .header-content {
-            flex-wrap: nowrap;
-            gap: 10px;
-            justify-content: center;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 1;
-        }
-        header.collapsed .logo {
-            gap: 10px;
-        }
-        .logo img {
-            width: 60px;
-            height: 60px;
-            border-radius: 8px;
-            object-fit: cover;
-            border: 2px solid #fff;
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 1;
-        }
-        header.collapsed .logo img {
-            width: 45px;
-            height: 45px;
-        }
-        .logo-text {
-            color: white;
-            font-size: 1.5rem;
-            font-weight: bold;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
-                        transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 1;
-            transform: translateX(0) scale(1);
-            white-space: nowrap;
-            overflow: hidden;
-            max-width: 300px;
-        }
-        header.collapsed .logo-text {
-            opacity: 0;
-            transform: translateX(-20px) scale(0.8);
-            max-width: 0;
-        }
-        .logo-text span {
-            display: block;
-            font-size: 0.9rem;
-            font-weight: normal;
-            margin-top: 2px;
-        }
-        nav {
-            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
-                        transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-                        max-width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 1;
-            transform: translateX(0);
-            overflow: hidden;
-            max-width: 800px;
-        }
-        header.collapsed nav {
-            opacity: 0;
-            transform: translateX(20px);
-            max-width: 0;
-            pointer-events: none;
-        }
-        header.collapsed nav.active {
-            display: block;
-            position: absolute;
-            top: 70px;
-            right: 0;
-            background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
-            border-radius: 15px;
-            padding: 15px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-            opacity: 1;
-            transform: translateX(0);
-            max-width: 250px;
-            pointer-events: auto;
-        }
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 20px;
-        }
-        header.collapsed nav.active ul {
-            flex-direction: column;
-            gap: 10px;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 20px;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            white-space: nowrap;
-        }
-        nav a:hover {
-            background-color: rgba(255,255,255,0.2);
-            transform: translateY(-2px);
-        }
-        /* Hamburger Menu Button */
-        .hamburger-btn {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 5px;
-            z-index: 1001;
-            opacity: 0;
-            transform: scale(0.5) rotate(-90deg);
-            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s,
-                        transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
-        }
-        header.collapsed .hamburger-btn {
-            display: block;
-            opacity: 1;
-            transform: scale(1) rotate(0deg);
-        }
-        .hamburger-btn span {
-            display: block;
-            width: 25px;
-            height: 3px;
-            background: white;
-            margin: 5px 0;
-            transition: 0.3s;
-            border-radius: 2px;
-        }
-        .hamburger-btn.active span:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-        .hamburger-btn.active span:nth-child(2) {
-            opacity: 0;
-        }
-        .hamburger-btn.active span:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
-        /* Mobile Menu */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 500px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            margin-bottom: 40px;
-            margin-top: 90px;
-        }
-        .hero-content {
-            max-width: 800px;
-            padding: 20px;
-        }
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        }
-        .btn {
-            display: inline-block;
-            background: #8B4513;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            border: 2px solid #8B4513;
-            cursor: pointer;
-        }
-        .btn:hover {
-            background: transparent;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        /* Section Styles */
-        section {
-            margin-bottom: 60px;
-            padding: 40px 0;
-        }
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            color: #8B4513;
-            margin-bottom: 30px;
-            position: relative;
-        }
-        .section-title:after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 3px;
-            background: #8B4513;
-            margin: 15px auto;
-            border-radius: 2px;
-        }
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-        .about-text p {
-            margin-bottom: 20px;
-        }
-        .about-image {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        .about-image img {
-            width: 100%;
-            height: auto;
-            transition: transform 0.3s ease;
-        }
-        .about-image img:hover {
-            transform: scale(1.05);
-        }
-        /* Menu Section */
-        .menu-categories {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-        .menu-category-btn {
-            background: #f0f0f0;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-        .menu-category-btn.active, .menu-category-btn:hover {
-            background: #8B4513;
-            color: white;
-        }
-        .menu-items {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        .menu-item {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        .menu-item:hover {
-            transform: translateY(-5px);
-        }
-        .menu-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        .menu-item-content {
-            padding: 20px;
-        }
-        .menu-item h3 {
-            color: #8B4513;
-            margin-bottom: 10px;
-            font-size: 1.3rem;
-        }
-        .menu-item p {
-            color: #666;
-            margin-bottom: 15px;
-            font-size: 0.95rem;
-        }
-        .menu-item-price {
-            font-weight: bold;
-            color: #8B4513;
-            font-size: 1.2rem;
-        }
-        /* Services Section */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-        .service-card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-        .service-icon {
-            font-size: 3rem;
-            color: #8B4513;
-            margin-bottom: 20px;
-        }
-        .service-card h3 {
-            color: #8B4513;
-            margin-bottom: 15px;
-        }
-        /* Gallery Section */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        .gallery-item {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            height: 250px;
-        }
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-        .gallery-item img:hover {
-            transform: scale(1.1);
-        }
-        /* Reviews Section */
-        .reviews-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .review {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-        .review-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        .review-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: #8B4513;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            margin-right: 15px;
-        }
-        .review-info h4 {
-            color: #8B4513;
-        }
-        .review-info p {
-            color: #666;
-            font-size: 0.9rem;
-        }
-        .review-text {
-            font-style: italic;
-            line-height: 1.8;
-        }
-        /* Contacts Section */
-        .contacts-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
-        .contact-info {
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-        .contact-item {
-            margin-bottom: 20px;
-        }
-        .contact-item h3 {
-            color: #8B4513;
-            margin-bottom: 5px;
-        }
-        .map-container {
-            height: 300px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        .contact-form {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
-        }
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 1rem;
-        }
-        .form-group textarea {
-            height: 120px;
-            resize: vertical;
-        }
-        /* Footer */
-        footer {
-            background: #333;
-            color: white;
-            padding: 40px 0 20px;
-        }
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 30px;
-        }
-        .footer-section h3 {
-            color: #f0f0f0;
-            margin-bottom: 20px;
-            font-size: 1.3rem;
-        }
-        .footer-links {
-            list-style: none;
-        }
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-        .footer-links a {
-            color: #ccc;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        .footer-links a:hover {
-            color: #8B4513;
-        }
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid #555;
-            color: #aaa;
-            font-size: 0.9rem;
-        }
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            header.collapsed {
-                right: 10px;
-                top: 10px;
-            }
-            header.collapsed nav.active {
-                right: 0;
-                width: 200px;
-            }
-            .mobile-menu-btn {
-                display: block;
-                position: absolute;
-                right: 20px;
-                top: 25px;
-            }
-            header:not(.collapsed) nav ul {
-                display: none;
-                width: 100%;
-                flex-direction: column;
-                gap: 10px;
-                text-align: center;
-            }
-            header:not(.collapsed) nav ul.active {
-                display: flex;
-            }
-            .hero {
-                height: 400px;
-                margin-top: 90px;
-            }
-            .hero h1 {
-                font-size: 2rem;
-            }
-            .about-content,
-            .contacts-content {
-                grid-template-columns: 1fr;
-            }
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 15px;
-            }
-            .hero {
-                height: 300px;
-            }
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-            .section-title {
-                font-size: 1.8rem;
-            }
-            .menu-items {
-                grid-template-columns: 1fr;
-            }
-            header.collapsed {
-                right: 10px;
-            }
-        }
-    </style>
 </head>
 <body>
     <!-- Header -->
-    <header id="mainHeader">
+    <header id="mainHeader" role="banner">
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <img src="images/logo.jpg" alt="Барашкина радость">
+                    <img src="images/logo.jpg" alt="Логотип кафе Барашкина радость" loading="lazy" width="60" height="60">
                     <div class="logo-text">
                         Барашкина радость
                         <span>Армянская кухня в Туле</span>
                     </div>
                 </div>
-                <button class="mobile-menu-btn">☰</button>
-                <button class="hamburger-btn" id="hamburgerBtn">
+                <button class="mobile-menu-btn" aria-label="Мобильное меню">☰</button>
+                <button class="hamburger-btn" id="hamburgerBtn" aria-label="Меню навигации">
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
-                <nav id="mainNav">
+                <nav id="mainNav" role="navigation">
                     <ul>
                         <li><a href="#home">Главная</a></li>
                         <li><a href="#about">О нас</a></li>
@@ -652,14 +73,16 @@
             </div>
         </div>
     </header>
+
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Барашкина радость</h1>
             <p>Уютное кафе армянской кухни в Туле с традиционными рецептами и качественными продуктами</p>
-            <a href="#menu" class="btn">Посмотреть меню</a>
+            <a href="#menu" class="btn" aria-label="Посмотреть меню">Посмотреть меню</a>
         </div>
     </section>
+
     <!-- About Section -->
     <section id="about">
         <div class="container">
@@ -673,11 +96,12 @@
                     <p>Мы создаем уютную домашнюю атмосферу с традиционными армянскими рецептами и использованием качественных продуктов. Каждое блюдо готовится с любовью и вниманием к деталям, чтобы вы могли почувствовать настоящий вкус Армении.</p>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Интерьер кафе">
+                    <img src="images/cafe-interior.jpg" alt="Интерьер кафе Барашкина радость" loading="lazy" width="800" height="500">
                 </div>
             </div>
         </div>
     </section>
+
     <!-- Menu Section -->
     <section id="menu">
         <div class="container">
@@ -694,7 +118,7 @@
             <div class="menu-items">
                 <!-- Горячие блюда -->
                 <div class="menu-item" data-category="hot">
-                    <img src="https://avatars.dzeninfra.ru/get-zen_doc/271828/pub_681e7421c964c7115e139f21_681e751bd568643f0ae92e8b/scale_1200" alt="Хоровац">
+                    <img src="images/horovats.jpg" alt="Хоровац (армянский шашлык)" loading="lazy" width="600" height="400">
                     <div class="menu-item-content">
                         <h3>Хоровац (армянский шашлык)</h3>
                         <p>Ароматная баранина, маринованная в традиционных специях и приготовленная на углях</p>
@@ -702,7 +126,7 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="hot">
-                    <img src="https://belovanadi.ru/wp-content/uploads/2025/01/76.webp" alt="Долма">
+                    <img src="images/dolma.jpg" alt="Долма" loading="lazy" width="600" height="400">
                     <div class="menu-item-content">
                         <h3>Долма</h3>
                         <p>Виноградные листья, фаршированные рисом, мясом и ароматными травами</p>
@@ -710,7 +134,7 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="hot">
-                    <img src="https://avatars.dzeninfra.ru/get-zen_doc/271828/pub_681e80b050fdd77aa5d081fa_681e8187f95c6a5647e15570/scale_1200" alt="Кюфта">
+                    <img src="images/kyufta.jpg" alt="Кюфта" loading="lazy" width="600" height="400">
                     <div class="menu-item-content">
                         <h3>Кюфта</h3>
                         <p>Рубленые котлеты из баранины с луком и специями, обжаренные до золотистой корочки</p>
@@ -718,7 +142,7 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="hot">
-                    <img src="https://avatars.dzeninfra.ru/get-zen_doc/271828/pub_681e8505feea8a091d817c6a_681e8642a0cc157383d56cee/scale_1200" alt="Хаш">
+                    <img src="images/khash-dish.jpg" alt="Хаш" loading="lazy" width="600" height="400">
                     <div class="menu-item-content">
                         <h3>Хаш</h3>
                         <p>Традиционное армянское блюдо из рубца, сердца и ног баранины, вареное в течение суток</p>
@@ -726,7 +150,7 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="hot">
-                    <img src="https://avatars.mds.yandex.net/i?id=644f702b386da4847de14b8ced127840_l-2922687-images-thumbs&n=13" alt="Тжвжик">
+                    <img src="images/tjvjik.jpg" alt="Тжвжик" loading="lazy" width="600" height="400">
                     <div class="menu-item-content">
                         <h3>Тжвжик</h3>
                         <p>Жареная баранина с луком и зеленью, приготовленная по традиционному рецепту</p>
@@ -735,7 +159,7 @@
                 </div>
                 <!-- Закуски и салаты -->
                 <div class="menu-item" data-category="salads">
-                    <img src="https://trendhub.tv/wp-content/uploads/2025/01/00001-394871197.jpg" alt="Хумус">
+                    <img src="images/hummus.jpg" alt="Хумус" loading="lazy" width="600" height="400">
                     <div class="menu-item-content">
                         <h3>Хумус</h3>
                         <p>Традиционная армянская закуска из нута с кунжутной пастой и оливковым маслом</p>
@@ -743,7 +167,7 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="salads">
-                    <img src="https://avatars.mds.yandex.net/i?id=f7ceaa8f2582a06289a784d2df6186c8_l-5236925-images-thumbs&n=13" alt="Мцвади">
+                    <img src="images/mtsvadi.jpg" alt="Мцвади" loading="lazy" width="600" height="400">
                     <div class="menu-item-content">
                         <h3>Мцвади</h3>
                         <p>Сочный шашлык из свинины или говядины, маринованный в вине и специях</p>
@@ -751,7 +175,7 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="salads">
-                    <img src="https://cdn1.ozone.ru/s3/multimedia-n/6030648731.jpg" alt="Бастурма">
+                    <img src="images/basturma.jpg" alt="Бастурма" loading="lazy" width="600" height="400">
                     <div class="menu-item-content">
                         <h3>Бастурма</h3>
                         <p>Сушеная вяленая баранина, маринованная в армянских специях</p>
@@ -759,7 +183,7 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="salads">
-                    <img src="https://avatars.dzeninfra.ru/get-zen_doc/271828/pub_68824af8c4e7c17e9b948d9f_68824af8c4e7c17e9b948da0/scale_1200" alt="Армянский сыр">
+                    <img src="images/armenian-cheese.jpg" alt="Армянский сыр" loading="lazy" width="600" height="400">
                     <div class="menu-item-content">
                         <h3>Армянский сыр</h3>
                         <p>Свежий домашний сыр с зеленью и специями</p>
@@ -767,7 +191,7 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="salads">
-                    <img src="https://avatars.dzeninfra.ru/get-zen_doc/271828/pub_684baec584ca1f2a3930b159_684bbc45c3e5315e1bc090f1/scale_1200" alt="Табуле">
+                    <img src="images/tabule.jpg" alt="Табуле" loading="lazy" width="600" height="400">
                     <div class="menu-item-content">
                         <h3>Табуле</h3>
                         <p>Салат из булгура, помидоров, огурцов, мяты и петрушки с лимонным соком</p>
@@ -776,7 +200,7 @@
                 </div>
                 <!-- Супы -->
                 <div class="menu-item" data-category="soups">
-                    <img src="https://avatars.mds.yandex.net/i?id=9c6b2bc4e9d13157841b41229c80c896_l-9242678-images-thumbs&n=13" alt="Спас">
+                    <img src="images/spas.jpg" alt="Спас (мацони суп)" loading="lazy" width="600" height="400">
                     <div class="menu-item-content">
                         <h3>Спас (мацони суп)</h3>
                         <p>Традиционный армянский суп из йогурта с добавлением риса, вермишели и зелени</p>
@@ -784,7 +208,7 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="soups">
-                    <img src="https://cafe-ani-zakaz.ru/wp-content/uploads/2024/09/spas3.jpg" alt="Хаш">
+                    <img src="images/khash-soup.jpg" alt="Хаш (суп)" loading="lazy" width="600" height="400">
                     <div class="menu-item-content">
                         <h3>Хаш (суп)</h3>
                         <p>Наваристый бульон из бараньих ног с добавлением чеснока и зелени</p>
@@ -792,7 +216,7 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="soups">
-                    <img src="https://yandex-images.clstorage.net/RLom97373/c268e8kA4dv/Crf4jGFjDdfadz5J7gODGl8-Qd4wLpnETOnyqsMgXvCZUqFnGSpOB5Wxc9gQ1JIa0krk0szJICzY0KDWZkbXP8_1vksgcJkTmuZuDnjXElyKsAxUPqqLBYxu5GTNrQX4VZxtqwM10FQAp2fKgkdCi4mRIMoZlDX-gpN9jmqNiWYOKCDca6xJ2Vl_MJZjzgNFHTzA3fWsS0sJqq0njq0J_V8aJ6dBPtYcRWZiwY6Qw8CDlzzGWNr29o8UvotmgwFjRiUqXKlmD5pXN_eQJAsDDF_4ShS8pcKCSyLt6YikjHnYkiXrCT7algZt5UqO0IfLDBr9w5TZu33P1__ObwOBoIQrodznL0VXmn500KsHjcAVtMQf-C4LzQ3gLeOD4Yi8khSgK0jylxOGb-pKAdUFBIhXPoWf3rd6ShhzQOKIieKFKOrX6eQL1lg9NNkjRgqBkD9P2vXgxkpPb6kpzumPuhrcKq3E-RaTQeJlBo3UCoIG3L1NGB9_eIraPkQlTsPjziOm3yjuzpJec_IQropEQ1E8RpP55sbPBmhlq8xkzDucX2ogSHTTlsrv74OCFQaCRt9xApjU9_CHn7NL5YRA5UNr5xTsJQuYXHD4mueLwwuTPs8etOIOjoSpJenEbIu835_k40n2VZ5FKSKIgdFAgkYeegxQFrC8Qlf2yqMOBOAI6e9VqePMFxtwOZBsDkdK1DCHF7qkQw1GrCiphmEGtJbbIKOKshjbgiGmRsIZxUOKnfvA0lR6cktVMEcqBc9lSuthFm1lj5JT9_vZ7AEGQVw3yh16IAKPiG8s48rkjzyWU-lkCnGW1gFuLcJKUIpPgNs9yxoavDxNmHgC7sJHKoco5VSopA3SGrCz3unHwUNQe0zStOXAQg4l6SqBbgD81BTopct0npHKZ-hBBV7LhgOeso3eGTa1x1w_DyoFBymHZCGe5aPJ09t1-FrkwARBFDAOnnggwspJpewrQU" alt="Бозбаш">
+                    <img src="images/bozbash.jpg" alt="Бозбаш" loading="lazy" width="600" height="400">
                     <div class="menu-item-content">
                         <h3>Бозбаш</h3>
                         <p>Густой мясной суп с абрикосами и армянскими специями</p>
@@ -801,7 +225,7 @@
                 </div>
                 <!-- Выпечка -->
                 <div class="menu-item" data-category="bakery">
-                    <img src="https://avatars.mds.yandex.net/get-altay/14296560/2a00000193975c3e94743fdfa8927127ce2f/XXXL" alt="Лаваш">
+                    <img src="images/lavash.jpg" alt="Свежий лаваш" loading="lazy" width="600" height="400">
                     <div class="menu-item-content">
                         <h3>Свежий лаваш</h3>
                         <p>Традиционный армянский хлеб, испеченный по старинному рецепту</p>
@@ -809,7 +233,7 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="bakery">
-                    <img src="https://avatars.dzeninfra.ru/get-zen_doc/1210285/pub_5b6efa4a8f29f600a98496de_5b6f163bb5223300a919661f/scale_1200" alt="Гата">
+                    <img src="images/gata.jpg" alt="Гата" loading="lazy" width="600" height="400">
                     <div class="menu-item-content">
                         <h3>Гата</h3>
                         <p>Традиционная армянская слоеная выпечка с маслом и сахаром</p>
@@ -817,7 +241,7 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="bakery">
-                    <img src="https://cdnstatic.rg.ru/uploads/images/2022/12/28/13p_nazuk-768x512_1000_96e.jpg" alt="Назук">
+                    <img src="images/nazuk.jpg" alt="Назук" loading="lazy" width="600" height="400">
                     <div class="menu-item-content">
                         <h3>Назук</h3>
                         <p>Сдобная булочка с маслом и сахаром, традиционная армянская выпечка</p>
@@ -825,7 +249,7 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="bakery">
-                    <img src="https://i.pinimg.com/originals/a4/a0/2b/a4a02b27fefbc871c7bc8e5d707bfa28.jpg" alt="Женгялов хаци">
+                    <img src="images/jengyalov-hats.jpg" alt="Женгялов хаци" loading="lazy" width="600" height="400">
                     <div class="menu-item-content">
                         <h3>Женгялов хаци</h3>
                         <p>Тонкие лепешки с 33 видами трав и зелени</p>
@@ -834,7 +258,7 @@
                 </div>
                 <!-- Напитки -->
                 <div class="menu-item" data-category="drinks">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Armenian_Coffee-13.JPG/500px-Armenian_Coffee-13.JPG" alt="Армянский кофе">
+                    <img src="images/armenian-coffee.jpg" alt="Армянский кофе" loading="lazy" width="600" height="400">
                     <div class="menu-item-content">
                         <h3>Армянский кофе</h3>
                         <p>Натуральный кофе, приготовленный по традиционной армянской технологии</p>
@@ -842,7 +266,7 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="drinks">
-                    <img src="https://armeniagid.com/wp-content/uploads/2021/10/matsoni-e1634152724330.png" alt="Мацони">
+                    <img src="images/matzoon.jpg" alt="Мацони" loading="lazy" width="600" height="400">
                     <div class="menu-item-content">
                         <h3>Мацони</h3>
                         <p>Традиционный армянский йогурт из овечьего молока</p>
@@ -850,7 +274,7 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="drinks">
-                    <img src="https://img.freepik.com/premium-photo/compote-dried-fruits-assorted-dried-fruits-bowl_508037-2311.jpg" alt="Компот">
+                    <img src="images/compote.jpg" alt="Компот из сухофруктов" loading="lazy" width="600" height="400">
                     <div class="menu-item-content">
                         <h3>Компот из сухофруктов</h3>
                         <p>Освежающий компот из армянских сухофруктов</p>
@@ -858,7 +282,7 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="drinks">
-                    <img src="https://s9.travelask.ru/system/images/files/001/263/203/wysiwyg/ARARAT_Cognac_Factory.jpg" alt="Армянский коньяк">
+                    <img src="images/ararat-cognac.jpg" alt="Армянский коньяк" loading="lazy" width="600" height="400">
                     <div class="menu-item-content">
                         <h3>Армянский коньяк</h3>
                         <p>Высококачественный армянский коньяк "Арарат"</p>
@@ -867,7 +291,7 @@
                 </div>
                 <!-- Десерты -->
                 <div class="menu-item" data-category="desserts">
-                    <img src="https://masterpiecer-images.s3.yandex.net/8a2cea55644e11ee9a32ceda526c50ab:upscaled" alt="Пахлава">
+                    <img src="images/pakhlava.jpg" alt="Пахлава" loading="lazy" width="600" height="400">
                     <div class="menu-item-content">
                         <h3>Пахлава</h3>
                         <p>Традиционный армянский десерт из слоеного теста с орехами и сиропом</p>
@@ -875,7 +299,7 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="desserts">
-                    <img src="https://ir.ozone.ru/s3/multimedia-i/w1200/6680418246.jpg" alt="Алани">
+                    <img src="images/alani.jpg" alt="Алани" loading="lazy" width="600" height="400">
                     <div class="menu-item-content">
                         <h3>Алани</h3>
                         <p>Орехи в виноградном сиропе, традиционное армянское лакомство</p>
@@ -883,7 +307,7 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="desserts">
-                    <img src="https://masterpiecer-images.s3.yandex.net/9f635a277d3f11eeb5a456181a0358a2:upscaled" alt="Шакер-чурек">
+                    <img src="images/shaker-churek.jpg" alt="Шакер-чурек" loading="lazy" width="600" height="400">
                     <div class="menu-item-content">
                         <h3>Шакер-чурек</h3>
                         <p>Армянский пирог с начинкой из творога и изюма</p>
@@ -893,60 +317,63 @@
             </div>
         </div>
     </section>
+
     <!-- Services Section -->
     <section id="services">
         <div class="container">
             <h2 class="section-title">Наши услуги</h2>
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-icon">🚚</div>
+                    <div class="service-icon" aria-hidden="true">🚚</div>
                     <h3>Доставка</h3>
                     <p>Быстрая доставка армянской кухни прямо к вашему столу. Закажите доставку армянской еды и наслаждайтесь вкусом Армении у себя дома.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🎉</div>
+                    <div class="service-icon" aria-hidden="true">🎉</div>
                     <h3>Банкеты</h3>
                     <p>Организация банкетов и торжественных мероприятий с армянской кухней и гостеприимной атмосферой.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🏢</div>
+                    <div class="service-icon" aria-hidden="true">🏢</div>
                     <h3>Бизнес-ланчи</h3>
                     <p>Специальные предложения для корпоративных клиентов. Бизнес-ланчи в Туле с армянскими традициями.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">👨‍🍳</div>
+                    <div class="service-icon" aria-hidden="true">👨‍🍳</div>
                     <h3>Кейтеринг</h3>
                     <p>Профессиональный кейтеринг для любых мероприятий с аутентичной армянской кухней.</p>
                 </div>
             </div>
         </div>
     </section>
+
     <!-- Gallery Section -->
     <section id="gallery">
         <div class="container">
             <h2 class="section-title">Галерея</h2>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1554679665-f5537f187268?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Интерьер кафе">
+                    <img src="images/gallery1.jpg" alt="Интерьер кафе" loading="lazy" width="400" height="250">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Блюда">
+                    <img src="images/gallery2.jpg" alt="Блюда армянской кухни" loading="lazy" width="400" height="250">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Интерьер">
+                    <img src="images/gallery3.jpg" alt="Уютный интерьер" loading="lazy" width="400" height="250">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://belovanadi.ru/wp-content/uploads/2025/01/76.webp" alt="Шашлык">
+                    <img src="images/gallery4.jpg" alt="Шашлык на гриле" loading="lazy" width="400" height="250">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Закуски">
+                    <img src="images/gallery5.jpg" alt="Армянские закуски" loading="lazy" width="400" height="250">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Десерты">
+                    <img src="images/gallery6.jpg" alt="Десерты" loading="lazy" width="400" height="250">
                 </div>
             </div>
         </div>
     </section>
+
     <!-- Reviews Section -->
     <section id="reviews">
         <div class="container">
@@ -954,7 +381,7 @@
             <div class="reviews-container">
                 <div class="review">
                     <div class="review-header">
-                        <div class="review-avatar">АА</div>
+                        <div class="review-avatar" aria-label="Аватар Анны Андреевой">АА</div>
                         <div class="review-info">
                             <h4>Анна Андреева</h4>
                             <p>Постоянный клиент</p>
@@ -966,7 +393,7 @@
                 </div>
                 <div class="review">
                     <div class="review-header">
-                        <div class="review-avatar">ИИ</div>
+                        <div class="review-avatar" aria-label="Аватар Игоря Иванова">ИИ</div>
                         <div class="review-info">
                             <h4>Игорь Иванов</h4>
                             <p>Посетитель</p>
@@ -978,7 +405,7 @@
                 </div>
                 <div class="review">
                     <div class="review-header">
-                        <div class="review-avatar">МП</div>
+                        <div class="review-avatar" aria-label="Аватар Марии Петровой">МП</div>
                         <div class="review-info">
                             <h4>Мария Петрова</h4>
                             <p>Гость</p>
@@ -991,6 +418,7 @@
             </div>
         </div>
     </section>
+
     <!-- Contacts Section -->
     <section id="contacts">
         <div class="container">
@@ -1015,7 +443,7 @@
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form id="contactForm">
+                    <form id="contactForm" aria-label="Форма обратной связи">
                         <div class="form-group">
                             <label for="name">Имя</label>
                             <input type="text" id="name" name="name" required>
@@ -1032,13 +460,14 @@
                     </form>
                 </div>
             </div>
-            <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2474.896493026598!2d37.6173!3d54.1961!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4135009c7f800001%3A0x400a9a4b7c1e100!2z0KLQvtC80LjRgNC-0LLQvtC5INCf0L7Qu9C70LjQvdC-0LOG0KLRgNC-0LvQvtCy0LAsINCf0L7Qu9C70LjQvdC-0LOG0KLRgNC-0LvQvtCy0LAsIDE5MDAwMA!5e0!3m2!1sru!2sru!4v1635000000000!5m2!1sru!2sru"></iframe>
+            <div class="map-container" aria-label="Карта местоположения кафе">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2474.896493026598!2d37.6173!3d54.1961!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4135009c7f800001%3A0x400a9a4b7c1e100!2z0KLQvtC80LjRgNC-0LLQvtC5INCf0L7Qu9C70LjQvdC-0LOG0KLRgNC-0LvQvtCy0LAsINCf0L7Qu9C70LjQvdC-0LOG0KLRgNC-0LvQvtCy0LAsIDE5MDAwMA!5e0!3m2!1sru!2sru!4v1635000000000!5m2!1sru!2sru" title="Карта: Барашкина радость, Тула"></iframe>
             </div>
         </div>
     </section>
+
     <!-- Footer -->
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
@@ -1069,103 +498,7 @@
             </div>
         </div>
     </footer>
-    <script>
-        const header = document.getElementById('mainHeader');
-        const hamburgerBtn = document.getElementById('hamburgerBtn');
-        const mainNav = document.getElementById('mainNav');
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        let lastScrollTop = 0;
-        let isMenuOpen = false;
 
-        // Header collapse on scroll
-        window.addEventListener('scroll', function() {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            if (scrollTop > 100 && !isMenuOpen) {
-                header.classList.add('collapsed');
-            } else if (scrollTop <= 50) {
-                header.classList.remove('collapsed');
-                mainNav.classList.remove('active');
-                hamburgerBtn.classList.remove('active');
-                isMenuOpen = false;
-            }
-            
-            lastScrollTop = scrollTop;
-        });
-
-        // Hamburger menu toggle
-        hamburgerBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            isMenuOpen = !isMenuOpen;
-            this.classList.toggle('active');
-            mainNav.classList.toggle('active');
-            
-            if (isMenuOpen) {
-                header.classList.add('collapsed');
-            }
-        });
-
-        // Mobile menu toggle (for non-collapsed header)
-        mobileMenuBtn.addEventListener('click', function() {
-            const navUl = document.querySelector('nav ul');
-            navUl.classList.toggle('active');
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
-            if (header.classList.contains('collapsed') && 
-                !header.contains(e.target) && 
-                isMenuOpen) {
-                mainNav.classList.remove('active');
-                hamburgerBtn.classList.remove('active');
-                isMenuOpen = false;
-            }
-        });
-
-        // Menu Category Filter
-        document.querySelectorAll('.menu-category-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                document.querySelectorAll('.menu-category-btn').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                this.classList.add('active');
-                const category = this.getAttribute('data-category');
-                
-                document.querySelectorAll('.menu-item').forEach(item => {
-                    if (category === 'all' || item.getAttribute('data-category') === category) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            });
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    // Close menus
-                    document.querySelector('nav ul').classList.remove('active');
-                    mainNav.classList.remove('active');
-                    hamburgerBtn.classList.remove('active');
-                    isMenuOpen = false;
-                }
-            });
-        });
-
-        // Form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время.');
-            this.reset();
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
