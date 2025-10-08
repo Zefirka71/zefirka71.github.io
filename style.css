@@ -139,6 +139,7 @@ header.collapsed nav {
     pointer-events: none;
 }
 
+/* Открытое меню в collapsed состоянии */
 header.collapsed nav.active {
     display: block;
     position: absolute;
@@ -152,6 +153,13 @@ header.collapsed nav.active {
     transform: translateX(0);
     max-width: 250px;
     pointer-events: auto;
+    z-index: 1002;
+}
+
+header.collapsed nav.active ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 nav ul {
@@ -160,13 +168,28 @@ nav ul {
     gap: 20px;
 }
 
+/* На десктопе меню всегда видимое */
+@media (min-width: 769px) {
+    nav ul {
+        display: flex !important;
+    }
+}
+
 /* На мобильных скрываем меню по умолчанию */
 @media (max-width: 768px) {
-    nav ul {
+    /* Стили для обычного (не collapsed) хедера на мобильных */
+    header:not(.collapsed) nav {
+        opacity: 1;
+        transform: translateX(0);
+        max-width: none;
+        pointer-events: auto;
+    }
+    
+    header:not(.collapsed) nav ul {
         display: none;
         position: absolute;
-        top: 70px;
-        right: 0;
+        top: 80px;
+        right: 20px;
         background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
         border-radius: 15px;
         padding: 15px;
@@ -177,13 +200,18 @@ nav ul {
         z-index: 999;
     }
     
-    nav ul.active {
+    header:not(.collapsed) nav ul.active {
         display: flex;
     }
     
-    header:not(.collapsed) nav ul {
-        top: 80px;
-        right: 20px;
+    /* Стили для collapsed хедера на мобильных */
+    header.collapsed nav ul {
+        display: none;
+    }
+    
+    header.collapsed nav.active ul {
+        display: flex;
+        position: static;
     }
 }
 
@@ -941,19 +969,8 @@ footer {
         right: 10px;
     }
     
-    /* Убираем дублирование кнопки меню */
-    .mobile-menu-btn {
-        display: none !important;
-    }
-    
     .hamburger-btn {
-        display: block !important;
-    }
-    
-    header:not(.collapsed) .hamburger-btn {
-        position: absolute;
-        right: 15px;
-        top: 25px;
+        right: 15px !important;
     }
     
     .gallery-slide {
