@@ -28,12 +28,12 @@ window.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', revealOnScroll);
     setTimeout(revealOnScroll, 200);
 
-    // 12. Плавное появление header при скролле вверх
+    // 12. Появление header при скролле вверх
     let lastScrollY = window.scrollY;
     let stickyTimeout = null;
+    const header = document.getElementById('mainHeader');
     window.addEventListener('scroll', function() {
         const currY = window.scrollY;
-        const header = document.getElementById('mainHeader');
         if (!header) return;
         if (currY < lastScrollY && currY > 100) {
             header.classList.add('sticky-show');
@@ -42,8 +42,8 @@ window.addEventListener('DOMContentLoaded', function() {
         }
         lastScrollY = currY;
     });
-    // Оптимизация селекторов и проверок
-    const header = document.getElementById('mainHeader');
+
+    // Меню и скролл-логика
     const hamburgerBtn = document.getElementById('hamburgerBtn');
     const mainNav = document.getElementById('mainNav');
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -51,7 +51,7 @@ window.addEventListener('DOMContentLoaded', function() {
     let lastScrollTop = 0;
     let isMenuOpen = false;
 
-    // Header collapse on scroll
+    // Скрытие/показ header при скролле
     window.addEventListener('scroll', function() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         if (scrollTop > 100 && !isMenuOpen) {
@@ -65,7 +65,7 @@ window.addEventListener('DOMContentLoaded', function() {
         lastScrollTop = scrollTop;
     });
 
-    // Hamburger menu toggle
+    // Hamburger toggle
     if (hamburgerBtn && mainNav && header) {
         hamburgerBtn.addEventListener('click', function(e) {
             e.stopPropagation();
@@ -78,14 +78,14 @@ window.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Mobile menu toggle (для не-collapsed header)
+    // Mobile menu toggle
     if (mobileMenuBtn && navUl) {
         mobileMenuBtn.addEventListener('click', function() {
             navUl.classList.toggle('active');
         });
     }
 
-    // Закрытие меню по клику вне и по Esc
+    // Закрытие меню
     document.addEventListener('click', function(e) {
         if (header && header.classList.contains('collapsed') && 
             !header.contains(e.target) && 
@@ -103,7 +103,7 @@ window.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Индикатор "нет блюд"
+    // Фильтр меню
     let noItemsMsg = document.createElement('div');
     noItemsMsg.className = 'no-menu-items-msg';
     noItemsMsg.textContent = 'Нет блюд в выбранной категории.';
@@ -113,7 +113,6 @@ window.addEventListener('DOMContentLoaded', function() {
         noItemsMsg.style.display = 'none';
     }
 
-    // Menu Category Filter с сохранением выбранной категории
     const filterButtons = document.querySelectorAll('.menu-category-btn');
     const menuItems = document.querySelectorAll('.menu-item');
     function filterMenu(category) {
@@ -129,7 +128,6 @@ window.addEventListener('DOMContentLoaded', function() {
         if (noItemsMsg) {
             noItemsMsg.style.display = shown === 0 ? '' : 'none';
         }
-        // Сохраняем выбранную категорию
         localStorage.setItem('menuCategory', category);
     }
     filterButtons.forEach(button => {
@@ -140,14 +138,13 @@ window.addEventListener('DOMContentLoaded', function() {
             filterMenu(category);
         });
     });
-    // Инициализация фильтрации (восстановить из localStorage)
     let savedCategory = localStorage.getItem('menuCategory');
     let initialBtn = savedCategory ? document.querySelector('.menu-category-btn[data-category="' + savedCategory + '"]') : document.querySelector('.menu-category-btn.active');
     if (initialBtn) {
         initialBtn.click();
     }
 
-    // Smooth scrolling for navigation links
+    // ✅ ПЛАВНЫЙ СКРОЛЛ ТОЛЬКО ПО ЯКОРНЫМ ССЫЛКАМ
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -155,17 +152,18 @@ window.addEventListener('DOMContentLoaded', function() {
             if (target) {
                 window.scrollTo({
                     top: target.offsetTop - 80,
-                    behavior: 'smooth'
+                    behavior: 'smooth' // ← остаётся! только для кликов
                 });
-                navUl && navUl.classList.remove('active');
-                mainNav && mainNav.classList.remove('active');
-                hamburgerBtn && hamburgerBtn.classList.remove('active');
+                // Закрытие меню
+                if (navUl) navUl.classList.remove('active');
+                if (mainNav) mainNav.classList.remove('active');
+                if (hamburgerBtn) hamburgerBtn.classList.remove('active');
                 isMenuOpen = false;
             }
         });
     });
 
-    // Form submission
+    // Отправка формы
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
@@ -174,28 +172,4 @@ window.addEventListener('DOMContentLoaded', function() {
             this.reset();
         });
     }
-});
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            window.scrollTo({
-                top: target.offsetTop - 80,
-                behavior: 'smooth'
-            });
-            // Close menus
-            document.querySelector('nav ul').classList.remove('active');
-            mainNav.classList.remove('active');
-            hamburgerBtn.classList.remove('active');
-            isMenuOpen = false;
-        }
-    });
-});
-// Form submission
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время.');
-    this.reset();
 });
