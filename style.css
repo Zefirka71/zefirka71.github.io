@@ -94,9 +94,6 @@ header.sticky-show {
     transform: translateY(-6px) scale(1.03);
     transition: box-shadow 0.3s, transform 0.3s;
 }
-html {
-    scroll-behavior: smooth;
-}
 * {
     margin: 0;
     padding: 0;
@@ -805,4 +802,5 @@ footer {
     header.collapsed {
         right: 10px;
     }
+
 }
