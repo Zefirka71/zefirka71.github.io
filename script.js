@@ -1,120 +1,164 @@
-window.addEventListener('DOMContentLoaded', function() {
-    // 1. Параллакс-эффект для hero
+window.addEventListener('DOMContentLoaded', function () {
+    // === 1. Параллакс-эффект для hero (оптимизирован) ===
     const hero = document.querySelector('.hero');
+    let ticking = false;
+
+    function updateParallax() {
+        if (!hero) return;
+        if (window.innerWidth > 900) {
+            const y = window.scrollY * 0.4;
+            hero.style.backgroundPosition = `center calc(50% + ${y}px)`;
+        } else {
+            hero.style.backgroundPosition = '';
+        }
+        ticking = false;
+    }
+
+    function requestParallaxUpdate() {
+        if (!ticking) {
+            requestAnimationFrame(updateParallax);
+            ticking = true;
+        }
+    }
+
     if (hero) {
-        window.addEventListener('scroll', function() {
-            if (window.innerWidth > 900) {
-                const y = window.scrollY * 0.4;
-                hero.style.backgroundPosition = `center calc(50% + ${y}px)`;
-            } else {
-                hero.style.backgroundPosition = '';
-            }
-        });
+        window.addEventListener('scroll', requestParallaxUpdate, { passive: true });
+        window.addEventListener('resize', requestParallaxUpdate);
     }
 
-    // 2. Анимация появления секций при скролле
+    // === 2. Анимация появления элементов — через Intersection Observer ===
     const revealEls = document.querySelectorAll('section, .menu-item, .service-card, .gallery-item, .review');
-    function revealOnScroll() {
-        const trigger = window.innerHeight * 0.92;
-        revealEls.forEach(el => {
-            if (!el.classList.contains('reveal')) el.classList.add('reveal');
-            const rect = el.getBoundingClientRect();
-            if (rect.top < trigger) {
-                el.classList.add('revealed');
-            }
-        });
-    }
-    window.addEventListener('scroll', revealOnScroll);
-    window.addEventListener('resize', revealOnScroll);
-    setTimeout(revealOnScroll, 200);
 
-    // 12. Появление header при скролле вверх
+    if (revealEls.length > 0) {
+        // Добавляем базовый класс сразу
+        revealEls.forEach(el => el.classList.add('reveal'));
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    // Опционально: перестать наблюдать после появления (экономия ресурсов)
+                    // revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.08, // ~8% видимости → как у тебя было 92% от высоты окна
+            rootMargin: '0px 0px -8% 0px'
+        });
+
+        revealEls.forEach(el => revealObserver.observe(el));
+    }
+
+    // === 3. Sticky header при скролле вверх (оптимизирован) ===
+    const header = document.getElementById('mainHeader');
     let lastScrollY = window.scrollY;
     let stickyTimeout = null;
-    const header = document.getElementById('mainHeader');
-    window.addEventListener('scroll', function() {
-        const currY = window.scrollY;
+    let isMenuOpen = false;
+
+    function handleScroll() {
         if (!header) return;
+
+        const currY = window.scrollY;
+
+        // Sticky-show при скролле вверх
         if (currY < lastScrollY && currY > 100) {
             header.classList.add('sticky-show');
             clearTimeout(stickyTimeout);
-            stickyTimeout = setTimeout(() => header.classList.remove('sticky-show'), 1200);
+            stickyTimeout = setTimeout(() => {
+                header.classList.remove('sticky-show');
+            }, 1200);
         }
-        lastScrollY = currY;
-    });
 
-    // Меню и скролл-логика
+        // Collapsed header при скролле вниз
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollTop > 100 && !isMenuOpen) {
+            header.classList.add('collapsed');
+        } else if (scrollTop <= 50) {
+            header.classList.remove('collapsed');
+        }
+
+        lastScrollY = currY;
+    }
+
+    // Единый scroll-обработчик (оптимизирован)
+    let scrollTicking = false;
+    function requestScrollUpdate() {
+        if (!scrollTicking) {
+            requestAnimationFrame(handleScroll);
+            scrollTicking = true;
+        }
+    }
+
+    if (header) {
+        window.addEventListener('scroll', requestScrollUpdate, { passive: true });
+    }
+
+    // === 4. Меню и кнопки ===
     const hamburgerBtn = document.getElementById('hamburgerBtn');
     const mainNav = document.getElementById('mainNav');
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navUl = document.querySelector('nav ul');
-    let lastScrollTop = 0;
-    let isMenuOpen = false;
-
-    // Скрытие/показ header при скролле
-    window.addEventListener('scroll', function() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        if (scrollTop > 100 && !isMenuOpen) {
-            header && header.classList.add('collapsed');
-        } else if (scrollTop <= 50) {
-            header && header.classList.remove('collapsed');
-            mainNav && mainNav.classList.remove('active');
-            hamburgerBtn && hamburgerBtn.classList.remove('active');
-            isMenuOpen = false;
-        }
-        lastScrollTop = scrollTop;
-    });
 
     // Hamburger toggle
     if (hamburgerBtn && mainNav && header) {
-        hamburgerBtn.addEventListener('click', function(e) {
+        hamburgerBtn.addEventListener('click', function (e) {
             e.stopPropagation();
             isMenuOpen = !isMenuOpen;
             this.classList.toggle('active');
             mainNav.classList.toggle('active');
             if (isMenuOpen) {
                 header.classList.add('collapsed');
+            } else {
+                // При закрытии — проверим, нужно ли убрать collapsed
+                if (window.scrollY <= 50) {
+                    header.classList.remove('collapsed');
+                }
             }
         });
     }
 
     // Mobile menu toggle
     if (mobileMenuBtn && navUl) {
-        mobileMenuBtn.addEventListener('click', function() {
+        mobileMenuBtn.addEventListener('click', function () {
             navUl.classList.toggle('active');
         });
     }
 
-    // Закрытие меню
-    document.addEventListener('click', function(e) {
-        if (header && header.classList.contains('collapsed') && 
-            !header.contains(e.target) && 
+    // Закрытие меню по клику вне
+    document.addEventListener('click', function (e) {
+        if (header && header.classList.contains('collapsed') &&
+            !header.contains(e.target) &&
             isMenuOpen) {
-            mainNav && mainNav.classList.remove('active');
-            hamburgerBtn && hamburgerBtn.classList.remove('active');
-            isMenuOpen = false;
-        }
-    });
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && isMenuOpen) {
-            mainNav && mainNav.classList.remove('active');
-            hamburgerBtn && hamburgerBtn.classList.remove('active');
+            mainNav?.classList.remove('active');
+            hamburgerBtn?.classList.remove('active');
             isMenuOpen = false;
         }
     });
 
-    // Фильтр меню
-    let noItemsMsg = document.createElement('div');
-    noItemsMsg.className = 'no-menu-items-msg';
-    noItemsMsg.textContent = 'Нет блюд в выбранной категории.';
+    // Закрытие по Esc
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && isMenuOpen) {
+            mainNav?.classList.remove('active');
+            hamburgerBtn?.classList.remove('active');
+            isMenuOpen = false;
+        }
+    });
+
+    // === 5. Фильтр меню ===
     const menuItemsContainer = document.querySelector('.menu-items');
+    let noItemsMsg = null;
+
     if (menuItemsContainer) {
-        menuItemsContainer.appendChild(noItemsMsg);
+        noItemsMsg = document.createElement('div');
+        noItemsMsg.className = 'no-menu-items-msg';
+        noItemsMsg.textContent = 'Нет блюд в выбранной категории.';
         noItemsMsg.style.display = 'none';
+        menuItemsContainer.appendChild(noItemsMsg);
     }
 
     const filterButtons = document.querySelectorAll('.menu-category-btn');
     const menuItems = document.querySelectorAll('.menu-item');
+
     function filterMenu(category) {
         let shown = 0;
         menuItems.forEach(item => {
@@ -126,35 +170,45 @@ window.addEventListener('DOMContentLoaded', function() {
             }
         });
         if (noItemsMsg) {
-            noItemsMsg.style.display = shown === 0 ? '' : 'none';
+            noItemsMsg.style.display = shown === 0 ? 'block' : 'none';
         }
         localStorage.setItem('menuCategory', category);
     }
+
     filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             filterButtons.forEach(btn => btn.classList.remove('active'));
             this.classList.add('active');
             const category = this.getAttribute('data-category');
             filterMenu(category);
         });
     });
-    let savedCategory = localStorage.getItem('menuCategory');
-    let initialBtn = savedCategory ? document.querySelector('.menu-category-btn[data-category="' + savedCategory + '"]') : document.querySelector('.menu-category-btn.active');
+
+    // Восстановление фильтра
+    const savedCategory = localStorage.getItem('menuCategory');
+    const initialBtn = savedCategory
+        ? document.querySelector(`.menu-category-btn[data-category="${savedCategory}"]`)
+        : document.querySelector('.menu-category-btn.active');
+
     if (initialBtn) {
         initialBtn.click();
     }
 
-    // ✅ ПЛАВНЫЙ СКРОЛЛ ТОЛЬКО ПО ЯКОРНЫМ ССЫЛКАМ
+    // === 6. Плавный скролл ПО ЯКОРНЫМ ССЫЛКАМ (только при клике!) ===
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const targetId = this.getAttribute('href');
+            const target = document.querySelector(targetId);
+
             if (target) {
+                const offsetTop = target.offsetTop - 80; // 80px — отступ под header
                 window.scrollTo({
-                    top: target.offsetTop - 80,
-                    behavior: 'smooth' // ← остаётся! только для кликов
+                    top: offsetTop,
+                    behavior: 'smooth'
                 });
-                // Закрытие меню
+
+                // Закрыть мобильное меню
                 if (navUl) navUl.classList.remove('active');
                 if (mainNav) mainNav.classList.remove('active');
                 if (hamburgerBtn) hamburgerBtn.classList.remove('active');
@@ -163,10 +217,10 @@ window.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Отправка формы
+    // === 7. Форма обратной связи ===
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
             alert('Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время.');
             this.reset();
