@@ -1,3 +1,102 @@
+/* 1. Параллакс-эффект для hero */
+.hero {
+    position: relative;
+    background-attachment: fixed;
+    will-change: background-position;
+}
+@media (max-width: 900px) {
+    .hero {
+        background-attachment: scroll;
+    }
+}
+
+/* 2. Анимация появления секций при скролле */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+    transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+.reveal.revealed {
+    opacity: 1;
+    transform: none;
+}
+
+/* 3. Glow/box-shadow для карточек и кнопок */
+.menu-item:hover, .service-card:hover {
+    box-shadow: 0 12px 32px 0 rgba(139,69,19,0.18), 0 0 0 4px #ffe4c4a0;
+    border: 1.5px solid #ffe4c4;
+}
+.btn {
+    box-shadow: 0 2px 8px rgba(139,69,19,0.10);
+    position: relative;
+    overflow: hidden;
+}
+.btn:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(139,69,19,0.15);
+    border-radius: 100%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s, height 0.4s;
+    z-index: 0;
+}
+.btn:active:after {
+    width: 200px;
+    height: 200px;
+}
+.btn span, .btn strong {
+    position: relative;
+    z-index: 1;
+}
+
+/* 10. SVG-декор между секциями */
+.svg-divider {
+    display: block;
+    width: 100%;
+    height: 60px;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+}
+
+/* 12. Плавное появление header при скролле вверх */
+header.sticky-show {
+    animation: stickyFadeIn 0.7s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 6px 24px rgba(139,69,19,0.13);
+}
+@keyframes stickyFadeIn {
+    from { opacity: 0; transform: translateY(-40px); }
+    to { opacity: 1; transform: none; }
+}
+/* Сообщение о пустой категории меню */
+.no-menu-items-msg {
+    text-align: center;
+    color: #8B4513;
+    font-size: 1.2rem;
+    margin: 30px 0;
+    padding: 20px;
+    background: #fffbe9;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(139,69,19,0.07);
+}
+/* Hover-эффекты для карточек меню и услуг */
+.menu-item:hover {
+    box-shadow: 0 10px 30px rgba(139,69,19,0.15);
+    transform: translateY(-6px) scale(1.03);
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+.service-card:hover {
+    box-shadow: 0 10px 30px rgba(139,69,19,0.13);
+    transform: translateY(-6px) scale(1.03);
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+html {
+    scroll-behavior: smooth;
+}
 * {
     margin: 0;
     padding: 0;
@@ -7,7 +106,7 @@ body {
     font-family: 'Georgia', serif;
     line-height: 1.6;
     color: #333;
-    background-color: #f9f5f0;
+    background-color: #d4d5d8;
 }
 .container {
     max-width: 1200px;
@@ -339,7 +438,9 @@ section {
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.8s cubic-bezier(0.4,0,0.2,1), visibility 0.8s cubic-bezier(0.4,0,0.2,1);
+    opacity: 1;
+    visibility: visible;
 }
 .menu-item:hover {
     transform: translateY(-5px);
@@ -519,6 +620,96 @@ footer {
     background: #333;
     color: white;
     padding: 40px 0 20px;
+}
+
+/* --- Dishes pages: adaptive styles for images and text --- */
+.dish-main {
+        display: flex;
+        gap: 40px;
+        align-items: flex-start;
+        margin-bottom: 40px;
+}
+.dish-image {
+        flex: 0 0 380px;
+        max-width: 380px;
+        width: 100%;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 4px 18px rgba(139,69,19,0.10);
+}
+.dish-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 14px;
+}
+.dish-content {
+        flex: 1 1 0%;
+        min-width: 0;
+}
+.dish-content h1 {
+        font-size: 2.1rem;
+        color: #8B4513;
+        margin-bottom: 18px;
+}
+.dish-content p, .dish-content ul, .dish-content li {
+        font-size: 1.08rem;
+        line-height: 1.7;
+}
+.dish-section {
+        margin-bottom: 22px;
+}
+.dish-section-title {
+        color: #A0522D;
+        font-size: 1.15rem;
+        margin-bottom: 7px;
+        font-weight: bold;
+}
+
+@media (max-width: 900px) {
+    .dish-main {
+        flex-direction: column;
+        gap: 24px;
+        align-items: stretch;
+    }
+    .dish-image {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
+@media (max-width: 600px) {
+    .dish-main {
+        padding: 0 0 10px 0;
+        gap: 16px;
+    }
+    .dish-content h1 {
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+    }
+    .dish-content p, .dish-content ul, .dish-content li {
+        font-size: 0.98rem;
+    }
+    .dish-section-title {
+        font-size: 1.02rem;
+        margin-bottom: 5px;
+    }
+    .dish-image {
+        max-width: 220px;
+        margin: 0 auto 10px auto;
+        display: block;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(139,69,19,0.08);
+    }
+    .dish-image img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+    /* Сдвиг текста рецепта правее */
+    .dish-section.recipe {
+        padding-left: 16px;
+    }
 }
 .footer-content {
     display: grid;
