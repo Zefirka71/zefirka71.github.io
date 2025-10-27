@@ -7,27 +7,23 @@
     <title>Барашкина радость - Армянская кухня в Туле</title>
     <meta name="description" content="Армянская кухня в Туле. Барашкина радость - уютное кафе с традиционными рецептами и качественными продуктами.">
     <meta name="keywords" content="армянская кухня, армянское кафе, кавказская кухня Тула, где поесть в Туле, долма Тула, армянский шашлык, доставка армянской еды, бизнес-ланчи Тула, банкеты армянская кухня, мацони, лаваш, хачапури">
-
     <!-- Preload critical resources -->
     <link rel="preload" as="image" href="images/logo.jpg">
     <link rel="preload" as="image" href="images/hero-bg.jpg">
     <link rel="preload" as="style" href="style.css" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="style.css"></noscript>
-
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="canonical" href="https://zefirka71.github.io/">
-
     <!-- Open Graph / Social -->
     <meta property="og:title" content="Барашкина радость - Армянская кухня в Туле">
     <meta property="og:description" content="Уютное кафе армянской кухни в Туле с традиционными рецептами и качественными продуктами.">
     <meta property="og:image" content="https://zefirka71.github.io/images/hero-bg.jpg">
     <meta property="og:url" content="https://zefirka71.github.io/">
     <meta name="twitter:card" content="summary_large_image">
-
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
         (function(m,e,t,r,i,k,a){
@@ -72,9 +68,6 @@
             </div>
         </div>
     </header>
-
-
-
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
@@ -83,7 +76,6 @@
             <a href="#menu" class="btn" aria-label="Посмотреть меню">Посмотреть меню</a>
         </div>
     </section>
-
     <!-- About Section -->
     <section id="about">
     <div class="svg-divider" aria-hidden="true">
@@ -107,7 +99,6 @@
             </div>
         </div>
     </section>
-
     <!-- Menu Section -->
     <section id="menu">
     <div class="svg-divider" aria-hidden="true">
@@ -129,254 +120,277 @@
             <div class="menu-items">
                 <!-- Горячие блюда -->
                 <div class="menu-item" data-category="hot">
-                    <a href="dishes/horovats.html" style="text-decoration:none;color:inherit;">
-                        <img src="images/horovats.jpg" alt="Хоровац (армянский шашлык)" loading="lazy" width="600" height="400">
-                        <div class="menu-item-content">
-                            <h3>Хоровац (армянский шашлык)</h3>
-                            <p>Ароматная баранина, маринованная в традиционных специях и приготовленная на углях</p>
-                            <div class="menu-item-price">750 ₽</div>
-                        </div>
-                    </a>
+                    <img src="images/horovats.jpg" alt="Хоровац (армянский шашлык)" loading="lazy" width="600" height="400">
+                    <div class="menu-item-content">
+                        <h3><a href="dishes/horovats.html" class="dish-title">Хоровац (армянский шашлык)</a></h3>
+                        <p>Ароматная баранина, маринованная в традиционных специях и приготовленная на углях</p>
+                        <div class="menu-item-price">750 ₽</div>
+                        <button class="order-btn" data-id="horovats" data-name="Хоровац" data-price="750">
+                            Добавить в корзину
+                        </button>
+                    </div>
                 </div>
                 <div class="menu-item" data-category="hot">
-                    <a href="dishes/dolma.html" style="text-decoration:none;color:inherit;">
-                        <img src="images/dolma.jpg" alt="Долма" loading="lazy" width="600" height="400">
-                        <div class="menu-item-content">
-                            <h3>Долма</h3>
-                            <p>Виноградные листья, фаршированные рисом, мясом и ароматными травами</p>
-                            <div class="menu-item-price">450 ₽</div>
-                        </div>
-                    </a>
+                    <img src="images/dolma.jpg" alt="Долма" loading="lazy" width="600" height="400">
+                    <div class="menu-item-content">
+                        <h3><a href="dishes/dolma.html" class="dish-title">Долма</a></h3>
+                        <p>Виноградные листья, фаршированные рисом, мясом и ароматными травами</p>
+                        <div class="menu-item-price">450 ₽</div>
+                        <button class="order-btn" data-id="dolma" data-name="Долма" data-price="450">
+                            Добавить в корзину
+                        </button>
+                    </div>
                 </div>
                 <div class="menu-item" data-category="hot">
-                    <a href="dishes/kyufta.html" style="text-decoration:none;color:inherit;">
-                        <img src="images/kyufta.jpg" alt="Кюфта" loading="lazy" width="600" height="400">
-                        <div class="menu-item-content">
-                            <h3>Кюфта</h3>
-                            <p>Рубленые котлеты из баранины с луком и специями, обжаренные до золотистой корочки</p>
-                            <div class="menu-item-price">520 ₽</div>
-                        </div>
-                    </a>
+                    <img src="images/kyufta.jpg" alt="Кюфта" loading="lazy" width="600" height="400">
+                    <div class="menu-item-content">
+                        <h3><a href="dishes/kyufta.html" class="dish-title">Кюфта</a></h3>
+                        <p>Рубленые котлеты из баранины с луком и специями, обжаренные до золотистой корочки</p>
+                        <div class="menu-item-price">520 ₽</div>
+                        <button class="order-btn" data-id="kyufta" data-name="Кюфта" data-price="520">
+                            Добавить в корзину
+                        </button>
+                    </div>
                 </div>
                 <div class="menu-item" data-category="hot">
-                    <a href="dishes/khash.html" style="text-decoration:none;color:inherit;">
-                        <img src="images/khash-dish.jpg" alt="Хаш" loading="lazy" width="600" height="400">
-                        <div class="menu-item-content">
-                            <h3>Хаш</h3>
-                            <p>Традиционное армянское блюдо из рубца, сердца и ног баранины, вареное в течение суток</p>
-                            <div class="menu-item-price">680 ₽</div>
-                        </div>
-                    </a>
+                    <img src="images/khash-dish.jpg" alt="Хаш" loading="lazy" width="600" height="400">
+                    <div class="menu-item-content">
+                        <h3><a href="dishes/khash.html" class="dish-title">Хаш</a></h3>
+                        <p>Традиционное армянское блюдо из рубца, сердца и ног баранины, вареное в течение суток</p>
+                        <div class="menu-item-price">680 ₽</div>
+                        <button class="order-btn" data-id="khash" data-name="Хаш" data-price="680">
+                            Добавить в корзину
+                        </button>
+                    </div>
                 </div>
                 <div class="menu-item" data-category="hot">
-                    <a href="dishes/tjvjik.html" style="text-decoration:none;color:inherit;">
-                        <img src="images/tjvjik.jpg" alt="Тжвжик" loading="lazy" width="600" height="400">
-                        <div class="menu-item-content">
-                            <h3>Тжвжик</h3>
-                            <p>Жареная баранина с луком и зеленью, приготовленная по традиционному рецепту</p>
-                            <div class="menu-item-price">590 ₽</div>
-                        </div>
-                    </a>
+                    <img src="images/tjvjik.jpg" alt="Тжвжик" loading="lazy" width="600" height="400">
+                    <div class="menu-item-content">
+                        <h3><a href="dishes/tjvjik.html" class="dish-title">Тжвжик</a></h3>
+                        <p>Жареная баранина с луком и зеленью, приготовленная по традиционному рецепту</p>
+                        <div class="menu-item-price">590 ₽</div>
+                        <button class="order-btn" data-id="tjvjik" data-name="Тжвжик" data-price="590">
+                            Добавить в корзину
+                        </button>
+                    </div>
                 </div>
                 <!-- Закуски и салаты -->
                 <div class="menu-item" data-category="salads">
-                    <a href="dishes/hummus.html" style="text-decoration:none;color:inherit;">
-                        <img src="images/hummus.jpg" alt="Хумус" loading="lazy" width="600" height="400">
-                        <div class="menu-item-content">
-                            <h3>Хумус</h3>
-                            <p>Традиционная армянская закуска из нута с кунжутной пастой и оливковым маслом</p>
-                            <div class="menu-item-price">320 ₽</div>
-                        </div>
-                    </a>
+                    <img src="images/hummus.jpg" alt="Хумус" loading="lazy" width="600" height="400">
+                    <div class="menu-item-content">
+                        <h3><a href="dishes/hummus.html" class="dish-title">Хумус</a></h3>
+                        <p>Традиционная армянская закуска из нута с кунжутной пастой и оливковым маслом</p>
+                        <div class="menu-item-price">320 ₽</div>
+                        <button class="order-btn" data-id="hummus" data-name="Хумус" data-price="320">
+                            Добавить в корзину
+                        </button>
+                    </div>
                 </div>
                 <div class="menu-item" data-category="salads">
-                    <a href="dishes/mtsvadi.html" style="text-decoration:none;color:inherit;">
-                        <img src="images/mtsvadi.jpg" alt="Мцвади" loading="lazy" width="600" height="400">
-                        <div class="menu-item-content">
-                            <h3>Мцвади</h3>
-                            <p>Сочный шашлык из свинины или говядины, маринованный в вине и специях</p>
-                            <div class="menu-item-price">650 ₽</div>
-                        </div>
-                    </a>
+                    <img src="images/mtsvadi.jpg" alt="Мцвади" loading="lazy" width="600" height="400">
+                    <div class="menu-item-content">
+                        <h3><a href="dishes/mtsvadi.html" class="dish-title">Мцвади</a></h3>
+                        <p>Сочный шашлык из свинины или говядины, маринованный в вине и специях</p>
+                        <div class="menu-item-price">650 ₽</div>
+                        <button class="order-btn" data-id="mtsvadi" data-name="Мцвади" data-price="650">
+                            Добавить в корзину
+                        </button>
+                    </div>
                 </div>
                 <div class="menu-item" data-category="salads">
-                    <a href="dishes/basturma.html" style="text-decoration:none;color:inherit;">
-                        <img src="images/basturma.jpg" alt="Бастурма" loading="lazy" width="600" height="400">
-                        <div class="menu-item-content">
-                            <h3>Бастурма</h3>
-                            <p>Сушеная вяленая баранина, маринованная в армянских специях</p>
-                            <div class="menu-item-price">580 ₽</div>
-                        </div>
-                    </a>
+                    <img src="images/basturma.jpg" alt="Бастурма" loading="lazy" width="600" height="400">
+                    <div class="menu-item-content">
+                        <h3><a href="dishes/basturma.html" class="dish-title">Бастурма</a></h3>
+                        <p>Сушеная вяленая баранина, маринованная в армянских специях</p>
+                        <div class="menu-item-price">580 ₽</div>
+                        <button class="order-btn" data-id="basturma" data-name="Бастурма" data-price="580">
+                            Добавить в корзину
+                        </button>
+                    </div>
                 </div>
                 <div class="menu-item" data-category="salads">
-                    <a href="dishes/armenian-cheese.html" style="text-decoration:none;color:inherit;">
-                        <img src="images/armenian-cheese.jpg" alt="Армянский сыр" loading="lazy" width="600" height="400">
-                        <div class="menu-item-content">
-                            <h3>Армянский сыр</h3>
-                            <p>Свежий домашний сыр с зеленью и специями</p>
-                            <div class="menu-item-price">280 ₽</div>
-                        </div>
-                    </a>
+                    <img src="images/armenian-cheese.jpg" alt="Армянский сыр" loading="lazy" width="600" height="400">
+                    <div class="menu-item-content">
+                        <h3><a href="dishes/armenian-cheese.html" class="dish-title">Армянский сыр</a></h3>
+                        <p>Свежий домашний сыр с зеленью и специями</p>
+                        <div class="menu-item-price">280 ₽</div>
+                        <button class="order-btn" data-id="armenian-cheese" data-name="Армянский сыр" data-price="280">
+                            Добавить в корзину
+                        </button>
+                    </div>
                 </div>
                 <div class="menu-item" data-category="salads">
-                    <a href="dishes/tabule.html" style="text-decoration:none;color:inherit;">
-                        <img src="images/tabule.jpg" alt="Табуле" loading="lazy" width="600" height="400">
-                        <div class="menu-item-content">
-                            <h3>Табуле</h3>
-                            <p>Салат из булгура, помидоров, огурцов, мяты и петрушки с лимонным соком</p>
-                            <div class="menu-item-price">350 ₽</div>
-                        </div>
-                    </a>
+                    <img src="images/tabule.jpg" alt="Табуле" loading="lazy" width="600" height="400">
+                    <div class="menu-item-content">
+                        <h3><a href="dishes/tabule.html" class="dish-title">Табуле</a></h3>
+                        <p>Салат из булгура, помидоров, огурцов, мяты и петрушки с лимонным соком</p>
+                        <div class="menu-item-price">350 ₽</div>
+                        <button class="order-btn" data-id="tabule" data-name="Табуле" data-price="350">
+                            Добавить в корзину
+                        </button>
+                    </div>
                 </div>
                 <!-- Супы -->
                 <div class="menu-item" data-category="soups">
-                    <a href="dishes/spas.html" style="text-decoration:none;color:inherit;">
-                        <img src="images/spas.jpg" alt="Спас (мацони суп)" loading="lazy" width="600" height="400">
-                        <div class="menu-item-content">
-                            <h3>Спас (мацони суп)</h3>
-                            <p>Традиционный армянский суп из йогурта с добавлением риса, вермишели и зелени</p>
-                            <div class="menu-item-price">380 ₽</div>
-                        </div>
-                    </a>
+                    <img src="images/spas.jpg" alt="Спас (мацони суп)" loading="lazy" width="600" height="400">
+                    <div class="menu-item-content">
+                        <h3><a href="dishes/spas.html" class="dish-title">Спас (мацони суп)</a></h3>
+                        <p>Традиционный армянский суп из йогурта с добавлением риса, вермишели и зелени</p>
+                        <div class="menu-item-price">380 ₽</div>
+                        <button class="order-btn" data-id="spas" data-name="Спас" data-price="380">
+                            Добавить в корзину
+                        </button>
+                    </div>
                 </div>
                 <div class="menu-item" data-category="soups">
-                    <a href="dishes/khash-soup.html" style="text-decoration:none;color:inherit;">
-                        <img src="images/khash-soup.jpg" alt="Хаш (суп)" loading="lazy" width="600" height="400">
-                        <div class="menu-item-content">
-                            <h3>Хаш (суп)</h3>
-                            <p>Наваристый бульон из бараньих ног с добавлением чеснока и зелени</p>
-                            <div class="menu-item-price">420 ₽</div>
-                        </div>
-                    </a>
+                    <img src="images/khash-soup.jpg" alt="Хаш (суп)" loading="lazy" width="600" height="400">
+                    <div class="menu-item-content">
+                        <h3><a href="dishes/khash-soup.html" class="dish-title">Хаш (суп)</a></h3>
+                        <p>Наваристый бульон из бараньих ног с добавлением чеснока и зелени</p>
+                        <div class="menu-item-price">420 ₽</div>
+                        <button class="order-btn" data-id="khash-soup" data-name="Хаш (суп)" data-price="420">
+                            Добавить в корзину
+                        </button>
+                    </div>
                 </div>
                 <div class="menu-item" data-category="soups">
-                    <a href="dishes/bozbash.html" style="text-decoration:none;color:inherit;">
-                        <img src="images/bozbash.jpg" alt="Бозбаш" loading="lazy" width="600" height="400">
-                        <div class="menu-item-content">
-                            <h3>Бозбаш</h3>
-                            <p>Густой мясной суп с абрикосами и армянскими специями</p>
-                            <div class="menu-item-price">450 ₽</div>
-                        </div>
-                    </a>
+                    <img src="images/bozbash.jpg" alt="Бозбаш" loading="lazy" width="600" height="400">
+                    <div class="menu-item-content">
+                        <h3><a href="dishes/bozbash.html" class="dish-title">Бозбаш</a></h3>
+                        <p>Густой мясной суп с абрикосами и армянскими специями</p>
+                        <div class="menu-item-price">450 ₽</div>
+                        <button class="order-btn" data-id="bozbash" data-name="Бозбаш" data-price="450">
+                            Добавить в корзину
+                        </button>
+                    </div>
                 </div>
                 <!-- Выпечка -->
                 <div class="menu-item" data-category="bakery">
-                    <a href="dishes/lavash.html" style="text-decoration:none;color:inherit;">
-                        <img src="images/lavash.jpg" alt="Свежий лаваш" loading="lazy" width="600" height="400">
-                        <div class="menu-item-content">
-                            <h3>Свежий лаваш</h3>
-                            <p>Традиционный армянский хлеб, испеченный по старинному рецепту</p>
-                            <div class="menu-item-price">120 ₽</div>
-                        </div>
-                    </a>
+                    <img src="images/lavash.jpg" alt="Свежий лаваш" loading="lazy" width="600" height="400">
+                    <div class="menu-item-content">
+                        <h3><a href="dishes/lavash.html" class="dish-title">Свежий лаваш</a></h3>
+                        <p>Традиционный армянский хлеб, испеченный по старинному рецепту</p>
+                        <div class="menu-item-price">120 ₽</div>
+                        <button class="order-btn" data-id="lavash" data-name="Свежий лаваш" data-price="120">
+                            Добавить в корзину
+                        </button>
+                    </div>
                 </div>
                 <div class="menu-item" data-category="bakery">
-                    <a href="dishes/gata.html" style="text-decoration:none;color:inherit;">
-                        <img src="images/gata.jpg" alt="Гата" loading="lazy" width="600" height="400">
-                        <div class="menu-item-content">
-                            <h3>Гата</h3>
-                            <p>Традиционная армянская слоеная выпечка с маслом и сахаром</p>
-                            <div class="menu-item-price">180 ₽</div>
-                        </div>
-                    </a>
+                    <img src="images/gata.jpg" alt="Гата" loading="lazy" width="600" height="400">
+                    <div class="menu-item-content">
+                        <h3><a href="dishes/gata.html" class="dish-title">Гата</a></h3>
+                        <p>Традиционная армянская слоеная выпечка с маслом и сахаром</p>
+                        <div class="menu-item-price">180 ₽</div>
+                        <button class="order-btn" data-id="gata" data-name="Гата" data-price="180">
+                            Добавить в корзину
+                        </button>
+                    </div>
                 </div>
                 <div class="menu-item" data-category="bakery">
-                    <a href="dishes/nazuk.html" style="text-decoration:none;color:inherit;">
-                        <img src="images/nazuk.jpg" alt="Назук" loading="lazy" width="600" height="400">
-                        <div class="menu-item-content">
-                            <h3>Назук</h3>
-                            <p>Сдобная булочка с маслом и сахаром, традиционная армянская выпечка</p>
-                            <div class="menu-item-price">150 ₽</div>
-                        </div>
-                    </a>
+                    <img src="images/nazuk.jpg" alt="Назук" loading="lazy" width="600" height="400">
+                    <div class="menu-item-content">
+                        <h3><a href="dishes/nazuk.html" class="dish-title">Назук</a></h3>
+                        <p>Сдобная булочка с маслом и сахаром, традиционная армянская выпечка</p>
+                        <div class="menu-item-price">150 ₽</div>
+                        <button class="order-btn" data-id="nazuk" data-name="Назук" data-price="150">
+                            Добавить в корзину
+                        </button>
+                    </div>
                 </div>
                 <div class="menu-item" data-category="bakery">
-                    <a href="dishes/jengyalov-hats.html" style="text-decoration:none;color:inherit;">
-                        <img src="images/jengyalov-hats.jpg" alt="Женгялов хаци" loading="lazy" width="600" height="400">
-                        <div class="menu-item-content">
-                            <h3>Женгялов хаци</h3>
-                            <p>Тонкие лепешки с 33 видами трав и зелени</p>
-                            <div class="menu-item-price">220 ₽</div>
-                        </div>
-                    </a>
+                    <img src="images/jengyalov-hats.jpg" alt="Женгялов хаци" loading="lazy" width="600" height="400">
+                    <div class="menu-item-content">
+                        <h3><a href="dishes/jengyalov-hats.html" class="dish-title">Женгялов хаци</a></h3>
+                        <p>Тонкие лепешки с 33 видами трав и зелени</p>
+                        <div class="menu-item-price">220 ₽</div>
+                        <button class="order-btn" data-id="jengyalov-hats" data-name="Женгялов хаци" data-price="220">
+                            Добавить в корзину
+                        </button>
+                    </div>
                 </div>
                 <!-- Напитки -->
                 <div class="menu-item" data-category="drinks">
-                    <a href="dishes/armenian-coffee.html" style="text-decoration:none;color:inherit;">
-                        <img src="images/armenian-coffee.jpg" alt="Армянский кофе" loading="lazy" width="600" height="400">
-                        <div class="menu-item-content">
-                            <h3>Армянский кофе</h3>
-                            <p>Натуральный кофе, приготовленный по традиционной армянской технологии</p>
-                            <div class="menu-item-price">220 ₽</div>
-                        </div>
-                    </a>
+                    <img src="images/armenian-coffee.jpg" alt="Армянский кофе" loading="lazy" width="600" height="400">
+                    <div class="menu-item-content">
+                        <h3><a href="dishes/armenian-coffee.html" class="dish-title">Армянский кофе</a></h3>
+                        <p>Натуральный кофе, приготовленный по традиционной армянской технологии</p>
+                        <div class="menu-item-price">220 ₽</div>
+                        <button class="order-btn" data-id="armenian-coffee" data-name="Армянский кофе" data-price="220">
+                            Добавить в корзину
+                        </button>
+                    </div>
                 </div>
                 <div class="menu-item" data-category="drinks">
-                    <a href="dishes/matzoon.html" style="text-decoration:none;color:inherit;">
-                        <img src="images/matzoon.jpg" alt="Мацони" loading="lazy" width="600" height="400">
-                        <div class="menu-item-content">
-                            <h3>Мацони</h3>
-                            <p>Традиционный армянский йогурт из овечьего молока</p>
-                            <div class="menu-item-price">180 ₽</div>
-                        </div>
-                    </a>
+                    <img src="images/matzoon.jpg" alt="Мацони" loading="lazy" width="600" height="400">
+                    <div class="menu-item-content">
+                        <h3><a href="dishes/matzoon.html" class="dish-title">Мацони</a></h3>
+                        <p>Традиционный армянский йогурт из овечьего молока</p>
+                        <div class="menu-item-price">180 ₽</div>
+                        <button class="order-btn" data-id="matzoon" data-name="Мацони" data-price="180">
+                            Добавить в корзину
+                        </button>
+                    </div>
                 </div>
                 <div class="menu-item" data-category="drinks">
-                    <a href="dishes/compote.html" style="text-decoration:none;color:inherit;">
-                        <img src="images/compote.jpg" alt="Компот из сухофруктов" loading="lazy" width="600" height="400">
-                        <div class="menu-item-content">
-                            <h3>Компот из сухофруктов</h3>
-                            <p>Освежающий компот из армянских сухофруктов</p>
-                            <div class="menu-item-price">150 ₽</div>
-                        </div>
-                    </a>
+                    <img src="images/compote.jpg" alt="Компот из сухофруктов" loading="lazy" width="600" height="400">
+                    <div class="menu-item-content">
+                        <h3><a href="dishes/compote.html" class="dish-title">Компот из сухофруктов</a></h3>
+                        <p>Освежающий компот из армянских сухофруктов</p>
+                        <div class="menu-item-price">150 ₽</div>
+                        <button class="order-btn" data-id="compote" data-name="Компот из сухофруктов" data-price="150">
+                            Добавить в корзину
+                        </button>
+                    </div>
                 </div>
                 <div class="menu-item" data-category="drinks">
-                    <a href="dishes/ararat-cognac.html" style="text-decoration:none;color:inherit;">
-                        <img src="images/ararat-cognac.jpg" alt="Армянский коньяк" loading="lazy" width="600" height="400">
-                        <div class="menu-item-content">
-                            <h3>Армянский коньяк</h3>
-                            <p>Высококачественный армянский коньяк "Арарат"</p>
-                            <div class="menu-item-price">850 ₽</div>
-                        </div>
-                    </a>
+                    <img src="images/ararat-cognac.jpg" alt="Армянский коньяк" loading="lazy" width="600" height="400">
+                    <div class="menu-item-content">
+                        <h3><a href="dishes/ararat-cognac.html" class="dish-title">Армянский коньяк</a></h3>
+                        <p>Высококачественный армянский коньяк "Арарат"</p>
+                        <div class="menu-item-price">850 ₽</div>
+                        <button class="order-btn" data-id="ararat-cognac" data-name="Армянский коньяк" data-price="850">
+                            Добавить в корзину
+                        </button>
+                    </div>
                 </div>
                 <!-- Десерты -->
                 <div class="menu-item" data-category="desserts">
-                    <a href="dishes/pakhlava.html" style="text-decoration:none;color:inherit;">
-                        <img src="images/pakhlava.jpg" alt="Пахлава" loading="lazy" width="600" height="400">
-                        <div class="menu-item-content">
-                            <h3>Пахлава</h3>
-                            <p>Традиционный армянский десерт из слоеного теста с орехами и сиропом</p>
-                            <div class="menu-item-price">280 ₽</div>
-                        </div>
-                    </a>
+                    <img src="images/pakhlava.jpg" alt="Пахлава" loading="lazy" width="600" height="400">
+                    <div class="menu-item-content">
+                        <h3><a href="dishes/pakhlava.html" class="dish-title">Пахлава</a></h3>
+                        <p>Традиционный армянский десерт из слоеного теста с орехами и сиропом</p>
+                        <div class="menu-item-price">280 ₽</div>
+                        <button class="order-btn" data-id="pakhlava" data-name="Пахлава" data-price="280">
+                            Добавить в корзину
+                        </button>
+                    </div>
                 </div>
                 <div class="menu-item" data-category="desserts">
-                    <a href="dishes/alani.html" style="text-decoration:none;color:inherit;">
-                        <img src="images/alani.jpg" alt="Алани" loading="lazy" width="600" height="400">
-                        <div class="menu-item-content">
-                            <h3>Алани</h3>
-                            <p>Орехи в виноградном сиропе, традиционное армянское лакомство</p>
-                            <div class="menu-item-price">220 ₽</div>
-                        </div>
-                    </a>
+                    <img src="images/alani.jpg" alt="Алани" loading="lazy" width="600" height="400">
+                    <div class="menu-item-content">
+                        <h3><a href="dishes/alani.html" class="dish-title">Алани</a></h3>
+                        <p>Орехи в виноградном сиропе, традиционное армянское лакомство</p>
+                        <div class="menu-item-price">220 ₽</div>
+                        <button class="order-btn" data-id="alani" data-name="Алани" data-price="220">
+                            Добавить в корзину
+                        </button>
+                    </div>
                 </div>
                 <div class="menu-item" data-category="desserts">
-                    <a href="dishes/shaker-churek.html" style="text-decoration:none;color:inherit;">
-                        <img src="images/shaker-churek.jpg" alt="Шакер-чурек" loading="lazy" width="600" height="400">
-                        <div class="menu-item-content">
-                            <h3>Шакер-чурек</h3>
-                            <p>Армянский пирог с начинкой из творога и изюма</p>
-                            <div class="menu-item-price">250 ₽</div>
-                        </div>
-                    </a>
+                    <img src="images/shaker-churek.jpg" alt="Шакер-чурек" loading="lazy" width="600" height="400">
+                    <div class="menu-item-content">
+                        <h3><a href="dishes/shaker-churek.html" class="dish-title">Шакер-чурек</a></h3>
+                        <p>Армянский пирог с начинкой из творога и изюма</p>
+                        <div class="menu-item-price">250 ₽</div>
+                        <button class="order-btn" data-id="shaker-churek" data-name="Шакер-чурек" data-price="250">
+                            Добавить в корзину
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- Services Section -->
     <section id="services">
     <div class="svg-divider" aria-hidden="true">
@@ -390,7 +404,7 @@
                 <div class="service-card">
                     <div class="service-icon" aria-hidden="true">🚚</div>
                     <h3>Доставка</h3>
-                    <p>Быстрая доставка армянской кухни прямо к вашему столу. Закажите доставку армянской еды и наслаждайтесь вкусом Армении у себя дома.</p>
+                    <p>Быстрая доставка армянской кухни прямо к вашему столу. При заказе от 1200₽ доставка бесплатная! При заказе до 1200₽ стоимость доставки составляет 300₽.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon" aria-hidden="true">🎉</div>
@@ -410,10 +424,8 @@
             </div>
         </div>
     </section>
-
     <!-- Gallery Section -->
     <section id="gallery">
-
     <div class="svg-divider" aria-hidden="true">
         <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
             <path d="M0,30 Q360,60 720,30 T1440,30 V60 H0Z" fill="#f9f5f0"/>
@@ -443,7 +455,6 @@
             </div>
         </div>
     </section>
-
     <!-- Reviews Section -->
     <section id="reviews">
     <div class="svg-divider" aria-hidden="true">
@@ -493,7 +504,6 @@
             </div>
         </div>
     </section>
-
     <!-- Contacts Section -->
     <section id="contacts">
         <div class="container">
@@ -540,7 +550,6 @@
             </div>
         </div>
     </section>
-
     <!-- Footer -->
     <footer role="contentinfo">
         <div class="container">
@@ -573,6 +582,74 @@
             </div>
         </div>
     </footer>
+    <!-- Корзина -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Корзина</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="cartItems" class="cart-items">
+                    <!-- Здесь будут элементы корзины -->
+                </div>
+                <div class="cutlery-select">
+                    <label for="cutleryCount">Количество персон (столовые приборы):</label>
+                    <select id="cutleryCount" name="cutleryCount">
+                        <option value="1">1 персона</option>
+                        <option value="2">2 персоны</option>
+                        <option value="3">3 персоны</option>
+                        <option value="4">4 персоны (+30₽)</option>
+                        <option value="5">5 персон (+60₽)</option>
+                        <option value="6">6 персон (+90₽)</option>
+                    </select>
+                </div>
+                <div class="cart-summary">
+                    <div id="subtotal">Сумма заказа: <span>0</span> ₽</div>
+                    <div id="deliveryCost">Стоимость доставки: <span>300</span> ₽</div>
+                    <div id="cutleryCost">Дополнительные приборы: <span>0</span> ₽</div>
+                    <div class="cart-total">
+                        <h3>Итого: <span id="cartTotal">0</span> ₽</h3>
+                    </div>
+                </div>
+                <button type="button" id="clearCart" class="clear-cart-btn">Очистить корзину</button>
+                <form id="orderForm" class="order-form">
+                    <div class="form-group">
+                        <label for="orderName">Ваше имя*</label>
+                        <input type="text" id="orderName" name="name" required 
+                               pattern="^[А-Яа-яЁё\s-]{2,50}$"
+                               title="Имя должно содержать только русские буквы, дефис и пробелы (от 2 до 50 символов)">
+                    </div>
+                    <div class="form-group">
+                        <label for="orderPhone">Номер телефона*</label>
+                        <input type="tel" id="orderPhone" name="phone" required 
+                               pattern="^\+7\([0-9]{3}\)[0-9]{3}-[0-9]{2}-[0-9]{2}$"
+                               title="Формат: +7(XXX)XXX-XX-XX">
+                    </div>
+                    <div class="form-group">
+                        <label for="orderAddress">Адрес доставки*</label>
+                        <textarea id="orderAddress" name="address" required
+                                minlength="10" maxlength="200"
+                                title="Адрес должен содержать от 10 до 200 символов"></textarea>
+                    </div>
+                    <div class="form-group privacy-policy">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="privacyPolicy" name="privacyPolicy" required>
+                            <span class="checkmark"></span>
+                            Я согласен с <a href="#" class="policy-link">политикой конфиденциальности</a> и даю согласие на обработку персональных данных
+                        </label>
+                    </div>
+                    <button type="submit" class="btn order-submit-btn">Оформить заказ</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Кнопка корзины -->
+    <button id="cartButton" class="cart-button">
+        <span class="cart-icon">🛒</span>
+        <span class="cart-count">0</span>
+    </button>
 
     <script src="script.js"></script>
 </body>

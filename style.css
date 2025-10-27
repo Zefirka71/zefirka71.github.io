@@ -1,99 +1,186 @@
-/* 1. Параллакс-эффект для hero */
-.hero {
+.hamburger-btn {
+    display: none;
+    width: 44px;
+    height: 44px;
     position: relative;
-    background-attachment: fixed;
-    will-change: background-position;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 0;
 }
-@media (max-width: 900px) {
-    .hero {
-        background-attachment: scroll;
+.hamburger-btn span {
+    display: block;
+    width: 28px;
+    height: 4px;
+    margin: 5px auto;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.3s cubic-bezier(.4,2,.3,1);
+}
+.hamburger-btn.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+.hamburger-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger-btn.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+@media (max-width: 1024px) {
+    .header-content {
+        position: relative;
+    }
+    .hamburger-btn {
+        display: flex;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+/* --- Мобильное меню: всегда скрыто по умолчанию на малых экранах --- */
+@media (max-width: 768px) {
+    .hamburger-btn {
+        display: flex;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    .logo-text {
+        font-size: 1.2rem;
+        max-width: calc(100% - 100px);
+    }
+    
+    .logo-text span {
+        font-size: 0.8rem;
+    }
+    
+    .logo {
+        padding-right: 50px;
     }
 }
 
-/* 2. Анимация появления секций при скролле */
-.reveal {
-    opacity: 0;
-    transform: translateY(40px) scale(0.98);
-    transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
-}
-.reveal.revealed {
-    opacity: 1;
-    transform: none;
-}
+@media (max-width: 480px) {
+    .logo-text {
+        font-size: 1.1rem;
+    }
+    
+    .logo img {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .hamburger-btn {
+        right: 10px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .hamburger-btn span {
+        width: 24px;
+    }
 
-/* 3. Glow/box-shadow для карточек и кнопок */
-.menu-item:hover, .service-card:hover {
-    box-shadow: 0 12px 32px 0 rgba(139,69,19,0.18), 0 0 0 4px #ffe4c4a0;
-    border: 1.5px solid #ffe4c4;
-}
-.btn {
-    box-shadow: 0 2px 8px rgba(139,69,19,0.10);
-    position: relative;
-    overflow: hidden;
-}
-.btn:after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(139,69,19,0.15);
-    border-radius: 100%;
-    transform: translate(-50%, -50%);
-    transition: width 0.4s, height 0.4s;
-    z-index: 0;
-}
-.btn:active:after {
-    width: 200px;
-    height: 200px;
-}
-.btn span, .btn strong {
-    position: relative;
-    z-index: 1;
-}
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+        border-radius: 12px;
+        padding: 15px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        flex-direction: column;
+        gap: 12px;
+        width: 220px;
+        z-index: 1000;
+    }
 
-/* 10. SVG-декор между секциями */
-.svg-divider {
-    display: block;
-    width: 100%;
-    height: 60px;
-    margin: 0;
-    padding: 0;
-    line-height: 0;
-}
+    nav ul.active {
+        display: flex;
+    }
 
-/* 12. Плавное появление header при скролле вверх */
-header.sticky-show {
-    animation: stickyFadeIn 0.7s cubic-bezier(0.4,0,0.2,1);
-    box-shadow: 0 6px 24px rgba(139,69,19,0.13);
+    nav a {
+        white-space: nowrap;
+        text-align: center;
+        padding: 8px 12px;
+    }
+
+    /* Убираем поведение "островка" на мобильных */
+    header {
+        padding: 12px 0;
+    }
+
+    .header-content {
+        justify-content: space-between;
+    }
+
+    /* Убедимся, что логотип не исчезает */
+    .logo-text {
+        max-width: 200px;
+        overflow: hidden;
+    }
 }
-@keyframes stickyFadeIn {
-    from { opacity: 0; transform: translateY(-40px); }
-    to { opacity: 1; transform: none; }
+/* --- Мобильное меню: всегда скрыто по умолчанию на малых экранах --- */
+@media (max-width: 768px) {
+    .hamburger-btn {
+        display: block;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 5px;
+        z-index: 1001;
+        opacity: 1;
+        transform: scale(1);
+        position: relative;
+    }
+
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+        border-radius: 12px;
+        padding: 15px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        flex-direction: column;
+        gap: 12px;
+        width: 220px;
+        z-index: 1000;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    nav a {
+        white-space: nowrap;
+        text-align: center;
+        padding: 8px 12px;
+    }
+
+    /* Убираем поведение "островка" на мобильных */
+    header {
+        padding: 12px 0;
+    }
+
+    .header-content {
+        justify-content: space-between;
+    }
+
+    /* Убедимся, что логотип не исчезает */
+    .logo-text {
+        max-width: 200px;
+        overflow: hidden;
+    }
 }
-/* Сообщение о пустой категории меню */
-.no-menu-items-msg {
-    text-align: center;
-    color: #8B4513;
-    font-size: 1.2rem;
-    margin: 30px 0;
-    padding: 20px;
-    background: #fffbe9;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(139,69,19,0.07);
-}
-/* Hover-эффекты для карточек меню и услуг */
-.menu-item:hover {
-    box-shadow: 0 10px 30px rgba(139,69,19,0.15);
-    transform: translateY(-6px) scale(1.03);
-    transition: box-shadow 0.3s, transform 0.3s;
-}
-.service-card:hover {
-    box-shadow: 0 10px 30px rgba(139,69,19,0.13);
-    transform: translateY(-6px) scale(1.03);
-    transition: box-shadow 0.3s, transform 0.3s;
-}
+/* Удалены все стили, связанные с .collapsed, .sticky-show, .hamburger-btn */
+
 * {
     margin: 0;
     padding: 0;
@@ -121,7 +208,7 @@ textarea:focus,
     outline-offset: 2px;
 }
 
-/* Header Styles */
+/* Header Styles — всегда полный и фиксированный */
 header {
     background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
     padding: 15px 0;
@@ -131,42 +218,17 @@ header {
     left: 0;
     right: 0;
     z-index: 1000;
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    transform-origin: top right;
-}
-header.collapsed {
-    padding: 10px 20px;
-    top: 10px;
-    left: auto;
-    right: 20px;
-    width: auto;
-    max-width: 200px;
-    border-radius: 50px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    transform: scale(0.9);
 }
 .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 1;
-}
-header.collapsed .header-content {
-    flex-wrap: nowrap;
-    gap: 10px;
-    justify-content: center;
 }
 .logo {
     display: flex;
     align-items: center;
     gap: 15px;
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 1;
-}
-header.collapsed .logo {
-    gap: 10px;
 }
 .logo img {
     width: 60px;
@@ -174,30 +236,13 @@ header.collapsed .logo {
     border-radius: 8px;
     object-fit: cover;
     border: 2px solid #fff;
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 1;
-}
-header.collapsed .logo img {
-    width: 45px;
-    height: 45px;
 }
 .logo-text {
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     font-weight: bold;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
-                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 1;
-    transform: translateX(0) scale(1);
     white-space: nowrap;
-    overflow: hidden;
-    max-width: 300px;
-}
-header.collapsed .logo-text {
-    opacity: 0;
-    transform: translateX(-20px) scale(0.8);
-    max-width: 0;
 }
 .logo-text span {
     display: block;
@@ -205,43 +250,65 @@ header.collapsed .logo-text {
     font-weight: normal;
     margin-top: 2px;
 }
-nav {
-    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
-                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-                max-width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 1;
-    transform: translateX(0);
-    overflow: hidden;
-    max-width: 800px;
-}
-header.collapsed nav {
-    opacity: 0;
-    transform: translateX(20px);
-    max-width: 0;
-    pointer-events: none;
-}
-header.collapsed nav.active {
-    display: block;
-    position: absolute;
-    top: 70px;
-    right: 0;
-    background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
-    border-radius: 15px;
-    padding: 15px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    opacity: 1;
-    transform: translateX(0);
-    max-width: 250px;
-    pointer-events: auto;
-}
 nav ul {
     display: flex;
     list-style: none;
     gap: 20px;
 }
-header.collapsed nav.active ul {
-    flex-direction: column;
-    gap: 10px;
+
+.hamburger-btn {
+    display: none;
+}
+@media (max-width: 768px) {
+    .hamburger-btn {
+        display: block;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 5px;
+        z-index: 1001;
+        opacity: 1;
+        transform: scale(1);
+        position: relative;
+    }
+
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+        border-radius: 12px;
+        padding: 15px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        flex-direction: column;
+        gap: 12px;
+        width: 220px;
+        z-index: 1000;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    nav a {
+        white-space: nowrap;
+        text-align: center;
+        padding: 8px 12px;
+    }
+
+    header {
+        padding: 12px 0;
+    }
+
+    .header-content {
+        justify-content: space-between;
+    }
+
+    .logo-text {
+        max-width: 200px;
+        overflow: hidden;
+    }
 }
 nav a {
     color: white;
@@ -258,58 +325,12 @@ nav a:focus {
     transform: translateY(-2px);
 }
 
-/* Hamburger Menu Button */
-.hamburger-btn {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 5px;
-    z-index: 1001;
-    opacity: 0;
-    transform: scale(0.5) rotate(-90deg);
-    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s,
-                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
-}
-header.collapsed .hamburger-btn {
-    display: block;
-    opacity: 1;
-    transform: scale(1) rotate(0deg);
-}
-.hamburger-btn span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background: white;
-    margin: 5px 0;
-    transition: 0.3s;
-    border-radius: 2px;
-}
-.hamburger-btn.active span:nth-child(1) {
-    transform: rotate(-45deg) translate(-5px, 6px);
-}
-.hamburger-btn.active span:nth-child(2) {
-    opacity: 0;
-}
-.hamburger-btn.active span:nth-child(3) {
-    transform: rotate(45deg) translate(-5px, -6px);
-}
-
-/* Mobile Menu */
-.mobile-menu-btn {
-    display: none;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
 /* Hero Section */
 .hero {
     background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/hero-bg.jpg');
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
     height: 500px;
     display: flex;
     align-items: center;
@@ -317,7 +338,18 @@ header.collapsed .hamburger-btn {
     text-align: center;
     color: white;
     margin-bottom: 40px;
-    margin-top: 90px;
+    margin-top: 90px; /* учитываем высоту фиксированного хедера */
+}
+@media (max-width: 900px) {
+    .hero {
+        background-attachment: scroll;
+        height: 400px;
+    }
+}
+@media (max-width: 480px) {
+    .hero {
+        height: 300px;
+    }
 }
 .hero-content {
     max-width: 800px;
@@ -327,6 +359,16 @@ header.collapsed .hamburger-btn {
     font-size: 3rem;
     margin-bottom: 20px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+}
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
 }
 .hero p {
     font-size: 1.2rem;
@@ -344,12 +386,36 @@ header.collapsed .hamburger-btn {
     transition: all 0.3s ease;
     border: 2px solid #8B4513;
     cursor: pointer;
+    box-shadow: 0 2px 8px rgba(139,69,19,0.10);
+    position: relative;
+    overflow: hidden;
 }
 .btn:hover,
 .btn:focus {
     background: transparent;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+.btn:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(139,69,19,0.15);
+    border-radius: 100%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s, height 0.4s;
+    z-index: 0;
+}
+.btn:active:after {
+    width: 200px;
+    height: 200px;
+}
+.btn span, .btn strong {
+    position: relative;
+    z-index: 1;
 }
 
 /* Section Styles */
@@ -363,6 +429,16 @@ section {
     color: #8B4513;
     margin-bottom: 30px;
     position: relative;
+}
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2rem;
+    }
+}
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.8rem;
+    }
 }
 .section-title:after {
     content: '';
@@ -380,6 +456,11 @@ section {
     grid-template-columns: 1fr 1fr;
     gap: 40px;
     align-items: center;
+}
+@media (max-width: 768px) {
+    .about-content {
+        grid-template-columns: 1fr;
+    }
 }
 .about-text {
     font-size: 1.1rem;
@@ -418,29 +499,68 @@ section {
     cursor: pointer;
     transition: all 0.3s ease;
     font-weight: 500;
+    position: relative;
+    overflow: hidden;
 }
+
+.menu-category-btn:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: -100%;
+    background: linear-gradient(90deg, rgba(139,69,19,0.1), rgba(139,69,19,0));
+    transition: transform 0.3s ease;
+}
+
+.menu-category-btn:hover:after {
+    transform: translateX(100%);
+}
+
 .menu-category-btn.active,
 .menu-category-btn:hover,
 .menu-category-btn:focus {
     background: #8B4513;
     color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139,69,19,0.2);
 }
 .menu-items {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
 }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-items {
+        grid-template-columns: 1fr;
+    }
+}
+
 .menu-item {
     background: white;
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, opacity 0.8s cubic-bezier(0.4,0,0.2,1), visibility 0.8s cubic-bezier(0.4,0,0.2,1);
-    opacity: 1;
-    visibility: visible;
+    transition: all 0.3s ease;
+    animation: fadeIn 0.5s ease forwards;
 }
 .menu-item:hover {
-    transform: translateY(-5px);
+    box-shadow: 0 12px 32px 0 rgba(139,69,19,0.18), 0 0 0 4px #ffe4c4a0;
+    border: 1.5px solid #ffe4c4;
+    transform: translateY(-6px) scale(1.03);
 }
 .menu-item img {
     width: 100%;
@@ -451,9 +571,19 @@ section {
     padding: 20px;
 }
 .menu-item h3 {
-    color: #8B4513;
     margin-bottom: 10px;
     font-size: 1.3rem;
+}
+
+.dish-title {
+    color: #8B4513;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.dish-title:hover {
+    color: #A0522D;
+    text-decoration: underline;
 }
 .menu-item p {
     color: #666;
@@ -481,8 +611,9 @@ section {
     transition: all 0.3s ease;
 }
 .service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    box-shadow: 0 12px 32px 0 rgba(139,69,19,0.18), 0 0 0 4px #ffe4c4a0;
+    border: 1.5px solid #ffe4c4;
+    transform: translateY(-6px) scale(1.03);
 }
 .service-icon {
     font-size: 3rem;
@@ -563,6 +694,11 @@ section {
     grid-template-columns: 1fr 1fr;
     gap: 40px;
 }
+@media (max-width: 768px) {
+    .contacts-content {
+        grid-template-columns: 1fr;
+    }
+}
 .contact-info {
     font-size: 1.1rem;
     line-height: 1.8;
@@ -618,51 +754,485 @@ footer {
     color: white;
     padding: 40px 0 20px;
 }
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 30px;
+}
+.footer-section h3 {
+    color: #f0f0f0;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+.footer-links {
+    list-style: none;
+}
+.footer-links li {
+    margin-bottom: 10px;
+}
+.footer-links a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.footer-links a:hover,
+.footer-links a:focus {
+    color: #8B4513;
+}
+.copyright {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #555;
+    color: #aaa;
+    font-size: 0.9rem;
+}
 
-/* --- Dishes pages: adaptive styles for images and text --- */
+/* Стили для кнопки заказа в карточке блюда */
+.order-btn {
+    display: inline-block;
+    background: #8B4513;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+    font-weight: 500;
+}
+
+.order-btn:hover {
+    background: #A0522D;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139,69,19,0.2);
+}
+
+/* Модальное окно корзины */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 50px auto;
+    max-width: 600px;
+    border-radius: 15px;
+    position: relative;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    color: #8B4513;
+    margin: 0;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.3s ease;
+}
+
+.close-modal:hover {
+    color: #8B4513;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+/* Стили для элементов корзины */
+.cart-items {
+    margin-bottom: 20px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item-info {
+    flex-grow: 1;
+}
+
+.cart-item-quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantity-btn {
+    background: none;
+    border: 1px solid #8B4513;
+    color: #8B4513;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.quantity-btn:hover {
+    background: #8B4513;
+    color: white;
+}
+
+.cart-summary {
+    margin: 20px 0;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+
+.cart-summary > div {
+    margin: 10px 0;
+    color: #666;
+}
+
+.cart-total {
+    text-align: right;
+    margin: 20px 0;
+    color: #8B4513;
+    font-size: 1.2em;
+    border-top: 2px solid #ddd;
+    padding-top: 15px;
+}
+
+.cutlery-select {
+    margin: 15px 0;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+
+.cutlery-select label {
+    display: block;
+    margin-bottom: 8px;
+    color: #666;
+}
+
+.cutlery-select select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.clear-cart-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.clear-cart-btn:hover {
+    background: #ff5252;
+}
+
+.privacy-policy {
+    margin: 15px 0;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background-color: #8B4513;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkbox-container .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.policy-link {
+    color: #8B4513;
+    text-decoration: underline;
+}
+
+.policy-link:hover {
+    text-decoration: none;
+}
+
+/* Форма заказа */
+.order-form {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #8B4513;
+    outline: none;
+}
+
+.form-group input:invalid,
+.form-group textarea:invalid {
+    border-color: #ff6b6b;
+}
+
+/* Кнопка корзины */
+.cart-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #8B4513;
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-button:hover {
+    transform: scale(1.1);
+}
+
+.cart-button:active {
+    transform: scale(0.95);
+}
+
+.cart-button.has-items {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(139,69,19,0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(139,69,19,0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(139,69,19,0);
+    }
+}
+
+.cart-icon {
+    font-size: 24px;
+}
+
+.cart-count {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #ff6b6b;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Уведомления */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 8px;
+    background: #8B4513;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 1100;
+    transform: translateX(120%);
+    transition: transform 0.3s ease;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+.notification.error {
+    background: #ff6b6b;
+}
+
+.notification.success {
+    background: #51cf66;
+}
+
+/* SVG-декор между секциями */
+.svg-divider {
+    display: block;
+    width: 100%;
+    height: 60px;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+}
+
+/* Сообщение о пустой категории меню */
+.no-menu-items-msg {
+    text-align: center;
+    color: #8B4513;
+    font-size: 1.2rem;
+    margin: 30px 0;
+    padding: 20px;
+    background: #fffbe9;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(139,69,19,0.07);
+}
+
+/* Стили для страниц блюд (если используются) */
 .dish-main {
-        display: flex;
-        gap: 40px;
-        align-items: flex-start;
-        margin-bottom: 40px;
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    margin-bottom: 40px;
 }
 .dish-image {
-        flex: 0 0 380px;
-        max-width: 380px;
-        width: 100%;
-        border-radius: 14px;
-        overflow: hidden;
-        box-shadow: 0 4px 18px rgba(139,69,19,0.10);
+    flex: 0 0 380px;
+    max-width: 380px;
+    width: 100%;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 18px rgba(139,69,19,0.10);
 }
 .dish-image img {
-        width: 100%;
-        height: auto;
-        display: block;
-        border-radius: 14px;
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 14px;
 }
 .dish-content {
-        flex: 1 1 0%;
-        min-width: 0;
+    flex: 1 1 0%;
+    min-width: 0;
 }
 .dish-content h1 {
-        font-size: 2.1rem;
-        color: #8B4513;
-        margin-bottom: 18px;
+    font-size: 2.1rem;
+    color: #8B4513;
+    margin-bottom: 18px;
 }
 .dish-content p, .dish-content ul, .dish-content li {
-        font-size: 1.08rem;
-        line-height: 1.7;
+    font-size: 1.08rem;
+    line-height: 1.7;
 }
 .dish-section {
-        margin-bottom: 22px;
+    margin-bottom: 22px;
 }
 .dish-section-title {
-        color: #A0522D;
-        font-size: 1.15rem;
-        margin-bottom: 7px;
-        font-weight: bold;
+    color: #A0522D;
+    font-size: 1.15rem;
+    margin-bottom: 7px;
+    font-weight: bold;
 }
-
 @media (max-width: 900px) {
     .dish-main {
         flex-direction: column;
@@ -703,104 +1273,7 @@ footer {
         display: block;
         margin: 0 auto;
     }
-    /* Сдвиг текста рецепта правее */
     .dish-section.recipe {
         padding-left: 16px;
     }
-}
-.footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
-    margin-bottom: 30px;
-}
-.footer-section h3 {
-    color: #f0f0f0;
-    margin-bottom: 20px;
-    font-size: 1.3rem;
-}
-.footer-links {
-    list-style: none;
-}
-.footer-links li {
-    margin-bottom: 10px;
-}
-.footer-links a {
-    color: #ccc;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-.footer-links a:hover,
-.footer-links a:focus {
-    color: #8B4513;
-}
-.copyright {
-    text-align: center;
-    padding-top: 20px;
-    border-top: 1px solid #555;
-    color: #aaa;
-    font-size: 0.9rem;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    header.collapsed {
-        right: 10px;
-        top: 10px;
-    }
-    header.collapsed nav.active {
-        right: 0;
-        width: 200px;
-    }
-    .mobile-menu-btn {
-        display: block;
-        position: absolute;
-        right: 20px;
-        top: 25px;
-    }
-    header:not(.collapsed) nav ul {
-        display: none;
-        width: 100%;
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-    }
-    header:not(.collapsed) nav ul.active {
-        display: flex;
-    }
-    .hero {
-        height: 400px;
-        margin-top: 90px;
-    }
-    .hero h1 {
-        font-size: 2rem;
-    }
-    .about-content,
-    .contacts-content {
-        grid-template-columns: 1fr;
-    }
-    .section-title {
-        font-size: 2rem;
-    }
-}
-@media (max-width: 480px) {
-    .container {
-        padding: 0 15px;
-    }
-    .hero {
-        height: 300px;
-    }
-    .hero h1 {
-        font-size: 1.8rem;
-    }
-    .section-title {
-        font-size: 1.8rem;
-    }
-    .menu-items {
-        grid-template-columns: 1fr;
-    }
-    header.collapsed {
-        right: 10px;
-    }
-
 }
