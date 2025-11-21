@@ -1,5 +1,100 @@
 
-// === МОБИЛЬНОЕ МЕНЮ И ФИЛЬТРАЦИЯ ===
+// === МОБИЛЬНОЕ МЕНЮ, КОРЗИНА И КУКИ ===
+
+// --- Куки-консенс и Метрика (глобальные помощники) ---
+// Ключ для хранения статуса согласия на cookies / локальное хранилище
+const CONSENT_STORAGE_KEY = 'cookieConsent'; // values: 'accepted' | 'declined'
+
+function getConsentStatus() {
+    try {
+        return localStorage.getItem(CONSENT_STORAGE_KEY);
+    } catch (e) {
+        return null;
+    }
+}
+
+function setConsentStatus(status) {
+    try {
+        localStorage.setItem(CONSENT_STORAGE_KEY, status);
+    } catch (e) {}
+}
+
+function createCookieBanner() {
+    const banner = document.createElement('div');
+    banner.className = 'cookie-banner';
+    banner.setAttribute('role', 'dialog');
+    banner.setAttribute('aria-live', 'polite');
+    banner.innerHTML = `
+            <div class="cookie-banner__text">
+                Мы используем cookies для улучшения работы сайта и анализа статистики. 
+                Вы можете <a href="#" class="cookie-policy-link">ознакомиться с политикой конфиденциальности</a>, 
+                а затем выбрать — согласиться или отказаться.
+            </div>
+            <div class="cookie-banner__actions">
+                <button type="button" class="cookie-btn cookie-btn--decline">Отказаться</button>
+                <button type="button" class="cookie-btn cookie-btn--accept">Согласиться</button>
+            </div>
+        `;
+    document.body.appendChild(banner);
+    return banner;
+}
+
+function showCookieBanner() {
+    const existing = document.querySelector('.cookie-banner');
+    const banner = existing || createCookieBanner();
+    banner.classList.add('show');
+    const declineBtn = banner.querySelector('.cookie-btn--decline');
+    const acceptBtn = banner.querySelector('.cookie-btn--accept');
+
+    declineBtn.onclick = () => {
+        setConsentStatus('declined');
+        // При отказе гарантируем отсутствие сохранённых данных корзины
+        try { localStorage.removeItem('cart'); } catch (e) {}
+        banner.classList.remove('show');
+        ensureCookieSettingsButtonVisible();
+    };
+
+    acceptBtn.onclick = () => {
+        setConsentStatus('accepted');
+        banner.classList.remove('show');
+        ensureCookieSettingsButtonVisible();
+        loadYandexMetrikaIfConsented();
+    };
+}
+
+function createCookieSettingsButton() {
+    const btn = document.createElement('button');
+    btn.className = 'cookie-settings-btn';
+    btn.setAttribute('aria-label', 'Настройки cookies');
+    btn.innerHTML = '⚙️';
+    btn.onclick = () => {
+        // Сбросить выбор и показать баннер снова
+        try { localStorage.removeItem(CONSENT_STORAGE_KEY); } catch (e) {}
+        showCookieBanner();
+    };
+    document.body.appendChild(btn);
+    return btn;
+}
+
+function ensureCookieSettingsButtonVisible() {
+    let btn = document.querySelector('.cookie-settings-btn');
+    if (!btn) btn = createCookieSettingsButton();
+    btn.classList.add('show');
+}
+
+function loadYandexMetrikaIfConsented() {
+    if (getConsentStatus() !== 'accepted') return;
+    // Не загружать повторно, если уже подгружено
+    if (typeof window.ym === 'function') return;
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=104130134', 'ym');
+    window.ym && window.ym(104130134, 'init', { ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true });
+}
+
 // Класс для управления корзиной
 class Cart {
     constructor() {
@@ -79,6 +174,12 @@ class Cart {
     }
 
     saveToLocalStorage() {
+        // Сохраняем корзину только если пользователь дал согласие на использование cookies/локального хранилища
+        if (getConsentStatus() !== 'accepted') {
+            // На всякий случай очищаем возможные старые данные
+            try { localStorage.removeItem('cart'); } catch (e) {}
+            return;
+        }
         try {
             const data = Array.from(this.items.entries());
             localStorage.setItem('cart', JSON.stringify(data));
@@ -89,8 +190,22 @@ class Cart {
     }
 
     loadFromLocalStorage() {
+        // Если пользователь не дал согласие, не восстанавливаем корзину между визитами
+        if (getConsentStatus() !== 'accepted') {
+            // Очищаем возможные старые данные и работаем только в рамках текущей сессии
+            try { localStorage.removeItem('cart'); } catch (e) {}
+            this.items = new Map();
+            this.updateTotal();
+            return;
+        }
+
         const saved = localStorage.getItem('cart');
-        if (saved) {
+        if (!saved) {
+            this.items = new Map();
+            this.updateTotal();
+            return;
+        }
+
             try {
                 const parsedData = JSON.parse(saved);
                 if (Array.isArray(parsedData)) {
@@ -103,7 +218,6 @@ class Cart {
                 console.error('Ошибка при загрузке корзины:', error);
                 this.items = new Map();
                 this.updateTotal();
-            }
         }
     }
 }
@@ -450,4 +564,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // Начальное обновление UI
     updateCartUI();
     updateCartButton();
+
+    // Инициализация согласия
+    const consent = getConsentStatus();
+    if (consent === 'accepted') {
+        // Принял cookies ранее: просто подгружаем Метрику и показываем кнопку настроек
+        loadYandexMetrikaIfConsented();
+        ensureCookieSettingsButtonVisible();
+    } else {
+        // Впервые на сайте ИЛИ ранее выбрал отказ:
+        // показываем баннер каждый раз при новом заходе,
+        // пока пользователь не согласится.
+        showCookieBanner();
+    }
 });
