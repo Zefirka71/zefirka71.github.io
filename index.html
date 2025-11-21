@@ -24,44 +24,41 @@
     <meta property="og:image" content="https://zefirka71.github.io/images/hero-bg.jpg">
     <meta property="og:url" content="https://zefirka71.github.io/">
     <meta name="twitter:card" content="summary_large_image">
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-        (function(m,e,t,r,i,k,a){
-            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-            m[i].l=1*new Date();
-            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=104130134', 'ym');
-        ym(104130134, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
-    </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/104130134" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    <!-- /Yandex.Metrika counter -->
+    <!-- Yandex.Metrika будет подключаться через script.js только после согласия на cookies -->
 </head>
 <body>
     <!-- Header -->
     <header id="mainHeader" role="banner">
         <div class="container">
             <div class="header-content">
-                <div class="logo">
+                <a href="#home" class="logo" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
                     <img src="images/logo.jpg" alt="Логотип кафе Барашкина радость" loading="lazy" width="60" height="60">
                     <div class="logo-text">
                         Барашкина радость
                         <span>Армянская кухня в Туле</span>
                     </div>
-                </div>
+                </a>
                 <button class="hamburger-btn" id="hamburgerBtn" aria-label="Меню навигации">
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
+                <div class="header-contacts" aria-label="Контакты">
+                    <div class="social-icons">
+                        <a href="https://t.me/Zefir_71" target="_blank" rel="noopener" aria-label="Telegram">
+                            <img src="images/telegram.svg" alt="Telegram">
+                        </a>
+                        <a href="https://t.me/Zefir_71" target="_blank" rel="noopener" aria-label="VK">
+                            <img src="images/vk.svg" alt="VK">
+                        </a>
+                    </div>
+                </div>
                 <nav id="mainNav" role="navigation">
                     <ul>
                         <li><a href="#home">Главная</a></li>
-                        <li><a href="#about">О нас</a></li>
                         <li><a href="#menu">Меню</a></li>
                         <li><a href="#services">Услуги</a></li>
                         <li><a href="#gallery">Галерея</a></li>
-                        <li><a href="#reviews">Отзывы</a></li>
                         <li><a href="#contacts">Контакты</a></li>
                     </ul>
                 </nav>
@@ -120,9 +117,14 @@
             <div class="menu-items">
                 <!-- Горячие блюда -->
                 <div class="menu-item" data-category="hot">
-                    <img src="images/horovats.jpg" alt="Хоровац (армянский шашлык)" loading="lazy" width="600" height="400">
+                    <a href="dishes/horovats.html" class="menu-item-link" aria-label="Перейти к блюду «Хоровац (армянский шашлык)»">
+                        <img src="images/horovats.jpg" alt="Хоровац (армянский шашлык)" loading="lazy" width="600" height="400">
+                        <div class="menu-item-link-label">
+                            <h3>Хоровац (армянский шашлык)</h3>
+                            <span class="menu-item-link-hint">Подробнее</span>
+                        </div>
+                    </a>
                     <div class="menu-item-content">
-                        <h3><a href="dishes/horovats.html" class="dish-title">Хоровац (армянский шашлык)</a></h3>
                         <p>Ароматная баранина, маринованная в традиционных специях и приготовленная на углях</p>
                         <div class="menu-item-price">750 ₽</div>
                         <button class="order-btn" data-id="horovats" data-name="Хоровац" data-price="750">
@@ -131,9 +133,14 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="hot">
-                    <img src="images/dolma.jpg" alt="Долма" loading="lazy" width="600" height="400">
+                    <a href="dishes/dolma.html" class="menu-item-link" aria-label="Перейти к блюду «Долма»">
+                        <img src="images/dolma.jpg" alt="Долма" loading="lazy" width="600" height="400">
+                        <div class="menu-item-link-label">
+                            <h3>Долма</h3>
+                            <span class="menu-item-link-hint">Подробнее</span>
+                        </div>
+                    </a>
                     <div class="menu-item-content">
-                        <h3><a href="dishes/dolma.html" class="dish-title">Долма</a></h3>
                         <p>Виноградные листья, фаршированные рисом, мясом и ароматными травами</p>
                         <div class="menu-item-price">450 ₽</div>
                         <button class="order-btn" data-id="dolma" data-name="Долма" data-price="450">
@@ -142,9 +149,14 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="hot">
-                    <img src="images/kyufta.jpg" alt="Кюфта" loading="lazy" width="600" height="400">
+                    <a href="dishes/kyufta.html" class="menu-item-link" aria-label="Перейти к блюду «Кюфта»">
+                        <img src="images/kyufta.jpg" alt="Кюфта" loading="lazy" width="600" height="400">
+                        <div class="menu-item-link-label">
+                            <h3>Кюфта</h3>
+                            <span class="menu-item-link-hint">Подробнее</span>
+                        </div>
+                    </a>
                     <div class="menu-item-content">
-                        <h3><a href="dishes/kyufta.html" class="dish-title">Кюфта</a></h3>
                         <p>Рубленые котлеты из баранины с луком и специями, обжаренные до золотистой корочки</p>
                         <div class="menu-item-price">520 ₽</div>
                         <button class="order-btn" data-id="kyufta" data-name="Кюфта" data-price="520">
@@ -153,9 +165,14 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="hot">
-                    <img src="images/khash-dish.jpg" alt="Хаш" loading="lazy" width="600" height="400">
+                    <a href="dishes/khash.html" class="menu-item-link" aria-label="Перейти к блюду «Хаш»">
+                        <img src="images/khash-dish.jpg" alt="Хаш" loading="lazy" width="600" height="400">
+                        <div class="menu-item-link-label">
+                            <h3>Хаш</h3>
+                            <span class="menu-item-link-hint">Подробнее</span>
+                        </div>
+                    </a>
                     <div class="menu-item-content">
-                        <h3><a href="dishes/khash.html" class="dish-title">Хаш</a></h3>
                         <p>Традиционное армянское блюдо из рубца, сердца и ног баранины, вареное в течение суток</p>
                         <div class="menu-item-price">680 ₽</div>
                         <button class="order-btn" data-id="khash" data-name="Хаш" data-price="680">
@@ -164,9 +181,14 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="hot">
-                    <img src="images/tjvjik.jpg" alt="Тжвжик" loading="lazy" width="600" height="400">
+                    <a href="dishes/tjvjik.html" class="menu-item-link" aria-label="Перейти к блюду «Тжвжик»">
+                        <img src="images/tjvjik.jpg" alt="Тжвжик" loading="lazy" width="600" height="400">
+                        <div class="menu-item-link-label">
+                            <h3>Тжвжик</h3>
+                            <span class="menu-item-link-hint">Подробнее</span>
+                        </div>
+                    </a>
                     <div class="menu-item-content">
-                        <h3><a href="dishes/tjvjik.html" class="dish-title">Тжвжик</a></h3>
                         <p>Жареная баранина с луком и зеленью, приготовленная по традиционному рецепту</p>
                         <div class="menu-item-price">590 ₽</div>
                         <button class="order-btn" data-id="tjvjik" data-name="Тжвжик" data-price="590">
@@ -176,9 +198,14 @@
                 </div>
                 <!-- Закуски и салаты -->
                 <div class="menu-item" data-category="salads">
-                    <img src="images/hummus.jpg" alt="Хумус" loading="lazy" width="600" height="400">
+                    <a href="dishes/hummus.html" class="menu-item-link" aria-label="Перейти к блюду «Хумус»">
+                        <img src="images/hummus.jpg" alt="Хумус" loading="lazy" width="600" height="400">
+                        <div class="menu-item-link-label">
+                            <h3>Хумус</h3>
+                            <span class="menu-item-link-hint">Подробнее</span>
+                        </div>
+                    </a>
                     <div class="menu-item-content">
-                        <h3><a href="dishes/hummus.html" class="dish-title">Хумус</a></h3>
                         <p>Традиционная армянская закуска из нута с кунжутной пастой и оливковым маслом</p>
                         <div class="menu-item-price">320 ₽</div>
                         <button class="order-btn" data-id="hummus" data-name="Хумус" data-price="320">
@@ -187,9 +214,14 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="salads">
-                    <img src="images/mtsvadi.jpg" alt="Мцвади" loading="lazy" width="600" height="400">
+                    <a href="dishes/mtsvadi.html" class="menu-item-link" aria-label="Перейти к блюду «Мцвади»">
+                        <img src="images/mtsvadi.jpg" alt="Мцвади" loading="lazy" width="600" height="400">
+                        <div class="menu-item-link-label">
+                            <h3>Мцвади</h3>
+                            <span class="menu-item-link-hint">Подробнее</span>
+                        </div>
+                    </a>
                     <div class="menu-item-content">
-                        <h3><a href="dishes/mtsvadi.html" class="dish-title">Мцвади</a></h3>
                         <p>Сочный шашлык из свинины или говядины, маринованный в вине и специях</p>
                         <div class="menu-item-price">650 ₽</div>
                         <button class="order-btn" data-id="mtsvadi" data-name="Мцвади" data-price="650">
@@ -198,9 +230,14 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="salads">
-                    <img src="images/basturma.jpg" alt="Бастурма" loading="lazy" width="600" height="400">
+                    <a href="dishes/basturma.html" class="menu-item-link" aria-label="Перейти к блюду «Бастурма»">
+                        <img src="images/basturma.jpg" alt="Бастурма" loading="lazy" width="600" height="400">
+                        <div class="menu-item-link-label">
+                            <h3>Бастурма</h3>
+                            <span class="menu-item-link-hint">Подробнее</span>
+                        </div>
+                    </a>
                     <div class="menu-item-content">
-                        <h3><a href="dishes/basturma.html" class="dish-title">Бастурма</a></h3>
                         <p>Сушеная вяленая баранина, маринованная в армянских специях</p>
                         <div class="menu-item-price">580 ₽</div>
                         <button class="order-btn" data-id="basturma" data-name="Бастурма" data-price="580">
@@ -209,9 +246,14 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="salads">
-                    <img src="images/armenian-cheese.jpg" alt="Армянский сыр" loading="lazy" width="600" height="400">
+                    <a href="dishes/armenian-cheese.html" class="menu-item-link" aria-label="Перейти к блюду «Армянский сыр»">
+                        <img src="images/armenian-cheese.jpg" alt="Армянский сыр" loading="lazy" width="600" height="400">
+                        <div class="menu-item-link-label">
+                            <h3>Армянский сыр</h3>
+                            <span class="menu-item-link-hint">Подробнее</span>
+                        </div>
+                    </a>
                     <div class="menu-item-content">
-                        <h3><a href="dishes/armenian-cheese.html" class="dish-title">Армянский сыр</a></h3>
                         <p>Свежий домашний сыр с зеленью и специями</p>
                         <div class="menu-item-price">280 ₽</div>
                         <button class="order-btn" data-id="armenian-cheese" data-name="Армянский сыр" data-price="280">
@@ -220,9 +262,14 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="salads">
-                    <img src="images/tabule.jpg" alt="Табуле" loading="lazy" width="600" height="400">
+                    <a href="dishes/tabule.html" class="menu-item-link" aria-label="Перейти к блюду «Табуле»">
+                        <img src="images/tabule.jpg" alt="Табуле" loading="lazy" width="600" height="400">
+                        <div class="menu-item-link-label">
+                            <h3>Табуле</h3>
+                            <span class="menu-item-link-hint">Подробнее</span>
+                        </div>
+                    </a>
                     <div class="menu-item-content">
-                        <h3><a href="dishes/tabule.html" class="dish-title">Табуле</a></h3>
                         <p>Салат из булгура, помидоров, огурцов, мяты и петрушки с лимонным соком</p>
                         <div class="menu-item-price">350 ₽</div>
                         <button class="order-btn" data-id="tabule" data-name="Табуле" data-price="350">
@@ -232,9 +279,14 @@
                 </div>
                 <!-- Супы -->
                 <div class="menu-item" data-category="soups">
-                    <img src="images/spas.jpg" alt="Спас (мацони суп)" loading="lazy" width="600" height="400">
+                    <a href="dishes/spas.html" class="menu-item-link" aria-label="Перейти к блюду «Спас (мацони суп)»">
+                        <img src="images/spas.jpg" alt="Спас (мацони суп)" loading="lazy" width="600" height="400">
+                        <div class="menu-item-link-label">
+                            <h3>Спас (мацони суп)</h3>
+                            <span class="menu-item-link-hint">Подробнее</span>
+                        </div>
+                    </a>
                     <div class="menu-item-content">
-                        <h3><a href="dishes/spas.html" class="dish-title">Спас (мацони суп)</a></h3>
                         <p>Традиционный армянский суп из йогурта с добавлением риса, вермишели и зелени</p>
                         <div class="menu-item-price">380 ₽</div>
                         <button class="order-btn" data-id="spas" data-name="Спас" data-price="380">
@@ -243,9 +295,14 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="soups">
-                    <img src="images/khash-soup.jpg" alt="Хаш (суп)" loading="lazy" width="600" height="400">
+                    <a href="dishes/khash-soup.html" class="menu-item-link" aria-label="Перейти к блюду «Хаш (суп)»">
+                        <img src="images/khash-soup.jpg" alt="Хаш (суп)" loading="lazy" width="600" height="400">
+                        <div class="menu-item-link-label">
+                            <h3>Хаш (суп)</h3>
+                            <span class="menu-item-link-hint">Подробнее</span>
+                        </div>
+                    </a>
                     <div class="menu-item-content">
-                        <h3><a href="dishes/khash-soup.html" class="dish-title">Хаш (суп)</a></h3>
                         <p>Наваристый бульон из бараньих ног с добавлением чеснока и зелени</p>
                         <div class="menu-item-price">420 ₽</div>
                         <button class="order-btn" data-id="khash-soup" data-name="Хаш (суп)" data-price="420">
@@ -254,9 +311,14 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="soups">
-                    <img src="images/bozbash.jpg" alt="Бозбаш" loading="lazy" width="600" height="400">
+                    <a href="dishes/bozbash.html" class="menu-item-link" aria-label="Перейти к блюду «Бозбаш»">
+                        <img src="images/bozbash.jpg" alt="Бозбаш" loading="lazy" width="600" height="400">
+                        <div class="menu-item-link-label">
+                            <h3>Бозбаш</h3>
+                            <span class="menu-item-link-hint">Подробнее</span>
+                        </div>
+                    </a>
                     <div class="menu-item-content">
-                        <h3><a href="dishes/bozbash.html" class="dish-title">Бозбаш</a></h3>
                         <p>Густой мясной суп с абрикосами и армянскими специями</p>
                         <div class="menu-item-price">450 ₽</div>
                         <button class="order-btn" data-id="bozbash" data-name="Бозбаш" data-price="450">
@@ -266,9 +328,14 @@
                 </div>
                 <!-- Выпечка -->
                 <div class="menu-item" data-category="bakery">
-                    <img src="images/lavash.jpg" alt="Свежий лаваш" loading="lazy" width="600" height="400">
+                    <a href="dishes/lavash.html" class="menu-item-link" aria-label="Перейти к блюду «Свежий лаваш»">
+                        <img src="images/lavash.jpg" alt="Свежий лаваш" loading="lazy" width="600" height="400">
+                        <div class="menu-item-link-label">
+                            <h3>Свежий лаваш</h3>
+                            <span class="menu-item-link-hint">Подробнее</span>
+                        </div>
+                    </a>
                     <div class="menu-item-content">
-                        <h3><a href="dishes/lavash.html" class="dish-title">Свежий лаваш</a></h3>
                         <p>Традиционный армянский хлеб, испеченный по старинному рецепту</p>
                         <div class="menu-item-price">120 ₽</div>
                         <button class="order-btn" data-id="lavash" data-name="Свежий лаваш" data-price="120">
@@ -277,9 +344,14 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="bakery">
-                    <img src="images/gata.jpg" alt="Гата" loading="lazy" width="600" height="400">
+                    <a href="dishes/gata.html" class="menu-item-link" aria-label="Перейти к блюду «Гата»">
+                        <img src="images/gata.jpg" alt="Гата" loading="lazy" width="600" height="400">
+                        <div class="menu-item-link-label">
+                            <h3>Гата</h3>
+                            <span class="menu-item-link-hint">Подробнее</span>
+                        </div>
+                    </a>
                     <div class="menu-item-content">
-                        <h3><a href="dishes/gata.html" class="dish-title">Гата</a></h3>
                         <p>Традиционная армянская слоеная выпечка с маслом и сахаром</p>
                         <div class="menu-item-price">180 ₽</div>
                         <button class="order-btn" data-id="gata" data-name="Гата" data-price="180">
@@ -288,9 +360,14 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="bakery">
-                    <img src="images/nazuk.jpg" alt="Назук" loading="lazy" width="600" height="400">
+                    <a href="dishes/nazuk.html" class="menu-item-link" aria-label="Перейти к блюду «Назук»">
+                        <img src="images/nazuk.jpg" alt="Назук" loading="lazy" width="600" height="400">
+                        <div class="menu-item-link-label">
+                            <h3>Назук</h3>
+                            <span class="menu-item-link-hint">Подробнее</span>
+                        </div>
+                    </a>
                     <div class="menu-item-content">
-                        <h3><a href="dishes/nazuk.html" class="dish-title">Назук</a></h3>
                         <p>Сдобная булочка с маслом и сахаром, традиционная армянская выпечка</p>
                         <div class="menu-item-price">150 ₽</div>
                         <button class="order-btn" data-id="nazuk" data-name="Назук" data-price="150">
@@ -299,9 +376,14 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="bakery">
-                    <img src="images/jengyalov-hats.jpg" alt="Женгялов хаци" loading="lazy" width="600" height="400">
+                    <a href="dishes/jengyalov-hats.html" class="menu-item-link" aria-label="Перейти к блюду «Женгялов хаци»">
+                        <img src="images/jengyalov-hats.jpg" alt="Женгялов хаци" loading="lazy" width="600" height="400">
+                        <div class="menu-item-link-label">
+                            <h3>Женгялов хаци</h3>
+                            <span class="menu-item-link-hint">Подробнее</span>
+                        </div>
+                    </a>
                     <div class="menu-item-content">
-                        <h3><a href="dishes/jengyalov-hats.html" class="dish-title">Женгялов хаци</a></h3>
                         <p>Тонкие лепешки с 33 видами трав и зелени</p>
                         <div class="menu-item-price">220 ₽</div>
                         <button class="order-btn" data-id="jengyalov-hats" data-name="Женгялов хаци" data-price="220">
@@ -311,9 +393,14 @@
                 </div>
                 <!-- Напитки -->
                 <div class="menu-item" data-category="drinks">
-                    <img src="images/armenian-coffee.jpg" alt="Армянский кофе" loading="lazy" width="600" height="400">
+                    <a href="dishes/armenian-coffee.html" class="menu-item-link" aria-label="Перейти к блюду «Армянский кофе»">
+                        <img src="images/armenian-coffee.jpg" alt="Армянский кофе" loading="lazy" width="600" height="400">
+                        <div class="menu-item-link-label">
+                            <h3>Армянский кофе</h3>
+                            <span class="menu-item-link-hint">Подробнее</span>
+                        </div>
+                    </a>
                     <div class="menu-item-content">
-                        <h3><a href="dishes/armenian-coffee.html" class="dish-title">Армянский кофе</a></h3>
                         <p>Натуральный кофе, приготовленный по традиционной армянской технологии</p>
                         <div class="menu-item-price">220 ₽</div>
                         <button class="order-btn" data-id="armenian-coffee" data-name="Армянский кофе" data-price="220">
@@ -322,9 +409,14 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="drinks">
-                    <img src="images/matzoon.jpg" alt="Мацони" loading="lazy" width="600" height="400">
+                    <a href="dishes/matzoon.html" class="menu-item-link" aria-label="Перейти к блюду «Мацони»">
+                        <img src="images/matzoon.jpg" alt="Мацони" loading="lazy" width="600" height="400">
+                        <div class="menu-item-link-label">
+                            <h3>Мацони</h3>
+                            <span class="menu-item-link-hint">Подробнее</span>
+                        </div>
+                    </a>
                     <div class="menu-item-content">
-                        <h3><a href="dishes/matzoon.html" class="dish-title">Мацони</a></h3>
                         <p>Традиционный армянский йогурт из овечьего молока</p>
                         <div class="menu-item-price">180 ₽</div>
                         <button class="order-btn" data-id="matzoon" data-name="Мацони" data-price="180">
@@ -333,9 +425,14 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="drinks">
-                    <img src="images/compote.jpg" alt="Компот из сухофруктов" loading="lazy" width="600" height="400">
+                    <a href="dishes/compote.html" class="menu-item-link" aria-label="Перейти к блюду «Компот из сухофруктов»">
+                        <img src="images/compote.jpg" alt="Компот из сухофруктов" loading="lazy" width="600" height="400">
+                        <div class="menu-item-link-label">
+                            <h3>Компот из сухофруктов</h3>
+                            <span class="menu-item-link-hint">Подробнее</span>
+                        </div>
+                    </a>
                     <div class="menu-item-content">
-                        <h3><a href="dishes/compote.html" class="dish-title">Компот из сухофруктов</a></h3>
                         <p>Освежающий компот из армянских сухофруктов</p>
                         <div class="menu-item-price">150 ₽</div>
                         <button class="order-btn" data-id="compote" data-name="Компот из сухофруктов" data-price="150">
@@ -344,10 +441,15 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="drinks">
-                    <img src="images/ararat-cognac.jpg" alt="Армянский коньяк" loading="lazy" width="600" height="400">
+                    <a href="dishes/ararat-cognac.html" class="menu-item-link" aria-label="Перейти к блюду «Армянский коньяк»">
+                        <img src="images/ararat-cognac.jpg" alt="Армянский коньяк" loading="lazy" width="600" height="400">
+                        <div class="menu-item-link-label">
+                            <h3>Армянский коньяк</h3>
+                            <span class="menu-item-link-hint">Подробнее</span>
+                        </div>
+                    </a>
                     <div class="menu-item-content">
-                        <h3><a href="dishes/ararat-cognac.html" class="dish-title">Армянский коньяк</a></h3>
-                        <p>Высококачественный армянский коньяк "Арарат"</p>
+                        <p>Высококачественный армянский коньяк «Арарат»</p>
                         <div class="menu-item-price">850 ₽</div>
                         <button class="order-btn" data-id="ararat-cognac" data-name="Армянский коньяк" data-price="850">
                             Добавить в корзину
@@ -356,9 +458,14 @@
                 </div>
                 <!-- Десерты -->
                 <div class="menu-item" data-category="desserts">
-                    <img src="images/pakhlava.jpg" alt="Пахлава" loading="lazy" width="600" height="400">
+                    <a href="dishes/pakhlava.html" class="menu-item-link" aria-label="Перейти к блюду «Пахлава»">
+                        <img src="images/pakhlava.jpg" alt="Пахлава" loading="lazy" width="600" height="400">
+                        <div class="menu-item-link-label">
+                            <h3>Пахлава</h3>
+                            <span class="menu-item-link-hint">Подробнее</span>
+                        </div>
+                    </a>
                     <div class="menu-item-content">
-                        <h3><a href="dishes/pakhlava.html" class="dish-title">Пахлава</a></h3>
                         <p>Традиционный армянский десерт из слоеного теста с орехами и сиропом</p>
                         <div class="menu-item-price">280 ₽</div>
                         <button class="order-btn" data-id="pakhlava" data-name="Пахлава" data-price="280">
@@ -367,9 +474,14 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="desserts">
-                    <img src="images/alani.jpg" alt="Алани" loading="lazy" width="600" height="400">
+                    <a href="dishes/alani.html" class="menu-item-link" aria-label="Перейти к блюду «Алани»">
+                        <img src="images/alani.jpg" alt="Алани" loading="lazy" width="600" height="400">
+                        <div class="menu-item-link-label">
+                            <h3>Алани</h3>
+                            <span class="menu-item-link-hint">Подробнее</span>
+                        </div>
+                    </a>
                     <div class="menu-item-content">
-                        <h3><a href="dishes/alani.html" class="dish-title">Алани</a></h3>
                         <p>Орехи в виноградном сиропе, традиционное армянское лакомство</p>
                         <div class="menu-item-price">220 ₽</div>
                         <button class="order-btn" data-id="alani" data-name="Алани" data-price="220">
@@ -378,9 +490,14 @@
                     </div>
                 </div>
                 <div class="menu-item" data-category="desserts">
-                    <img src="images/shaker-churek.jpg" alt="Шакер-чурек" loading="lazy" width="600" height="400">
+                    <a href="dishes/shaker-churek.html" class="menu-item-link" aria-label="Перейти к блюду «Шакер-чурек»">
+                        <img src="images/shaker-churek.jpg" alt="Шакер-чурек" loading="lazy" width="600" height="400">
+                        <div class="menu-item-link-label">
+                            <h3>Шакер-чурек</h3>
+                            <span class="menu-item-link-hint">Подробнее</span>
+                        </div>
+                    </a>
                     <div class="menu-item-content">
-                        <h3><a href="dishes/shaker-churek.html" class="dish-title">Шакер-чурек</a></h3>
                         <p>Армянский пирог с начинкой из творога и изюма</p>
                         <div class="menu-item-price">250 ₽</div>
                         <button class="order-btn" data-id="shaker-churek" data-name="Шакер-чурек" data-price="250">
@@ -526,27 +643,27 @@
                         <h3>Email</h3>
                         <p>info@barashkina-radost.ru</p>
                     </div>
-                </div>
-                <div class="contact-form">
-                    <form id="contactForm" aria-label="Форма обратной связи">
-                        <div class="form-group">
-                            <label for="name">Имя</label>
-                            <input type="text" id="name" name="name" required>
+                    <div class="contact-item contact-social">
+                        <h3>Мы в соцсетях</h3>
+                        <div class="social-icons">
+                            <a href="https://t.me/Zefir_71" target="_blank" rel="noopener" aria-label="Telegram">
+                                <img src="images/telegram.svg" alt="Telegram">
+                            </a>
+                            <a href="https://t.me/Zefir_71" target="_blank" rel="noopener" aria-label="VK">
+                                <img src="images/vk.svg" alt="VK">
+                            </a>
                         </div>
-                        <div class="form-group">
-                            <label for="phone">Телефон</label>
-                            <input type="tel" id="phone" name="phone" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Сообщение</label>
-                            <textarea id="message" name="message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Отправить</button>
-                    </form>
+                    </div>
                 </div>
             </div>
             <div class="map-container" aria-label="Карта местоположения кафе">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2474.896493026598!2d37.6173!3d54.1961!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4135009c7f800001%3A0x400a9a4b7c1e100!2z0KLQvtC80LjRgNC-0LLQvtC5INCf0L7Qu9C70LjQvdC-0LOG0KLRgNC-0LvQvtCy0LAsINCf0L7Qu9C70LjQvdC-0LOG0KLRgNC-0LvQvtCy0LAsIDE5MDAwMA!5e0!3m2!1sru!2sru!4v1635000000000!5m2!1sru!2sru" title="Карта: Барашкина радость, Тула"></iframe>
+                <iframe
+                    src="https://yandex.ru/map-widget/v1/?um=constructor%3A4f765802eb235644ea9dbcf7abd10e1f73c11358d52c4e3bfcbc11dede1e08cd&amp;source=constructor"
+                    width="100%"
+                    height="300"
+                    frameborder="0"
+                    title="Карта: Барашкина радость, Тула"
+                ></iframe>
             </div>
         </div>
     </section>
@@ -575,6 +692,14 @@
                         <li>+7 (4872) 123-456</li>
                         <li>info@barashkina-radost.ru</li>
                     </ul>
+                    <div class="social-icons" aria-label="Мы в соцсетях" style="margin-top:10px;">
+                        <a href="https://t.me/Zefir_71" target="_blank" rel="noopener" aria-label="Telegram">
+                            <img src="images/telegram.svg" alt="Telegram">
+                        </a>
+                        <a href="https://t.me/Zefir_71" target="_blank" rel="noopener" aria-label="VK">
+                            <img src="images/vk.svg" alt="VK">
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="copyright">
